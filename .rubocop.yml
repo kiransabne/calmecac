@@ -3,7 +3,7 @@ AllCops:
     - app/helpers/*
     - spec/**/*
     - config/**/*
-    - db/schema.rb
+    - db/**/*
     - node_modules/**/*
     - Guardfile
   TargetRubyVersion: 2.3

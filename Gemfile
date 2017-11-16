@@ -1,33 +1,34 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
+gem "acts-as-taggable-on"
 gem "alom"
-gem "pg"
-gem "rails-i18n"
-gem 'rails', '~> 5.1.4'
-gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'therubyracer', platforms: :ruby
-gem 'coffee-rails', '~> 4.2'
-gem 'jbuilder', '~> 2.5'
+gem "aws-sdk-s3"
+gem "coffee-rails", "~> 4.2"
+gem "devise"
+gem "devise-i18n"
+gem "gioco", git: "https://github.com/thelastinuit/gioco.git"
+gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "jquery-ui-rails"
-gem 'devise'
-gem "devise-i18n"
-gem 'acts-as-taggable-on'
 gem "paperclip"
-gem 'gioco', git: "https://github.com/thelastinuit/gioco.git"
+gem "pg"
+gem "puma", "~> 3.7"
+gem "pundit"
+gem "rails", "~> 5.1.4"
+gem "rails-i18n"
+gem "sass-rails", "~> 5.0"
+gem "therubyracer", platforms: :ruby
+gem "uglifier", ">= 1.3.0"
 
 group :development, :test do
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
   gem "brakeman", require: false
   gem "bundler-audit", require: false
+  gem "capybara", "~> 2.13"
   gem "factory_bot_rails"
   gem "faker"
   gem "mailcatcher"
@@ -36,6 +37,8 @@ group :development, :test do
   gem "reek"
   gem "rspec-rails"
   gem "rubocop"
+  gem "scss_lint", require: false
+  gem "selenium-webdriver"
 end
 
 group :test do
@@ -48,6 +51,7 @@ group :test do
   gem "guard-rspec"
   gem "guard-rubocop"
   gem "i18n-spec"
+  gem "pundit-matchers"
   gem "rails-controller-testing"
   gem "rspec-collection_matchers"
   gem "shoulda-matchers", "~> 3.1"
@@ -58,4 +62,4 @@ group :production do
   gem "rails_12factor", group: :production
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
