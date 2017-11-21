@@ -84,12 +84,8 @@ $ rake db:migrate
 ```
 $ plis run web bash
 ```
-2. Inside the container you need to install dependencies from `package.json`:
 
-```
-$ yarn install # --force is needed
-```
-3. Run Epick:
+2. Run Epick:
 
 ```
 $ plis start
@@ -115,36 +111,6 @@ web_1          | 21:16:12 web.1       | * Min threads: 5, max threads: 5
 web_1          | 21:16:12 web.1       | * Environment: development
 web_1          | 21:16:12 web.1       | * Listening on tcp://0.0.0.0:3000
 web_1          | 21:16:12 web.1       | Use Ctrl-C to stop
-web_1          | 21:16:13 webpacker.1 |  10% building modules 3/3 modules 0 active                                         
-web_1          | 21:16:13 webpacker.1 | Project is running at http://0.0.0.0:8080/
-web_1          | 21:16:13 webpacker.1 | webpack output is served from http://0.0.0.0:8080/packs/
-web_1          | 21:16:13 webpacker.1 | Content not from webpack is served from /usr/src/app/public/packs
-web_1          | 21:16:13 webpacker.1 | 404s will fallback to /index.html
-Hash: ac6f700c45b1c1576888                                                              
-web_1          | 21:16:26 webpacker.1 | Version: webpack 3.3.0
-web_1          | 21:16:26 webpacker.1 | Time: 12967ms
-web_1          | 21:16:26 webpacker.1 |          Asset       Size  Chunks                    Chunk Names
-web_1          | 21:16:26 webpacker.1 |     counter.js    3.19 MB       0  [emitted]  [big]  counter
-web_1          | 21:16:26 webpacker.1 | hello_react.js     2.9 MB       1  [emitted]  [big]  hello_react
-web_1          | 21:16:26 webpacker.1 | application.js     872 kB       2  [emitted]  [big]  application
-web_1          | 21:16:26 webpacker.1 |  manifest.json  186 bytes          [emitted]         
-web_1          | 21:16:26 webpacker.1 |   [66] ./node_modules/react/react.js 56 bytes {0} {1} [built]
-web_1          | 21:16:26 webpacker.1 |   [84] (webpack)-dev-server/client?http://0.0.0.0:8080 5.59 kB {0} {1} {2} [built]
-web_1          | 21:16:26 webpacker.1 |   [85] ./node_modules/url/url.js 23.3 kB {0} {1} {2} [built]
-web_1          | 21:16:26 webpacker.1 |   [93] (webpack)-dev-server/client/socket.js 856 bytes {0} {1} {2} [built]
-web_1          | 21:16:26 webpacker.1 |  [125] (webpack)-dev-server/client/overlay.js 3.6 kB {0} {1} {2} [built]
-web_1          | 21:16:26 webpacker.1 |  [130] (webpack)/hot/emitter.js 77 bytes {0} {1} {2} [built]
-web_1          | 21:16:26 webpacker.1 |  [183] ./node_modules/react-dom/index.js 59 bytes {0} {1} [built]
-web_1          | 21:16:26 webpacker.1 |  [279] multi (webpack)-dev-server/client?http://0.0.0.0:8080 ./app/javascript/packs/application.js 40 bytes {2} [built]
-web_1          | 21:16:26 webpacker.1 |  [280] ./app/javascript/packs/application.js 515 bytes {2} [built]
-web_1          | 21:16:26 webpacker.1 |  [281] multi (webpack)-dev-server/client?http://0.0.0.0:8080 ./app/javascript/packs/counter.js 40 bytes {0} [built]
-web_1          | 21:16:26 webpacker.1 |  [282] ./app/javascript/packs/counter.js 258 bytes {0} [built]
-web_1          | 21:16:26 webpacker.1 |  [283] ./app/javascript/counter/index.js 73 bytes {0} [built]
-web_1          | 21:16:26 webpacker.1 |  [319] multi (webpack)-dev-server/client?http://0.0.0.0:8080 ./app/javascript/packs/hello_react.js 40 bytes {1} [built]
-web_1          | 21:16:26 webpacker.1 |  [320] ./app/javascript/packs/hello_react.js 256 bytes {1} [built]
-web_1          | 21:16:26 webpacker.1 |  [321] ./app/javascript/hello_react/index.js 56 bytes {1} [built]
-web_1          | 21:16:26 webpacker.1 |     + 308 hidden modules
-web_1          | 21:16:26 webpacker.1 | webpack: Compiled successfully.
 ```
 
 This means the project is up and running.
