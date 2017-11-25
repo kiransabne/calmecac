@@ -1,5 +1,10 @@
 require "pundit/rspec"
 require 'pundit/matchers'
+require 'simplecov'
+
+SimpleCov.start "rails" do
+  add_filter [/spec/, /config/]
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

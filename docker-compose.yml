@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: dev.Dockerfile
-    command: foreman start -f Procfile.dev
+    command: rails s -b 0.0.0.0
     entrypoint: /usr/src/app/entrypoint
     working_dir: /usr/src/app
     volumes:
@@ -48,7 +48,7 @@ services:
     <<: *app
     command: bundle exec guard -g god_is_watching
     environment:
-      DATABASE_URL: "postgis://postgres:12341234@db:5432/database_test"
+      DATABASE_URL: "postgres://postgres:12341234@db:5432/database_test"
       RAILS_ENV: test
       RACK_ENV: test
     ports:
@@ -66,7 +66,7 @@ services:
     <<: *app
     command: foreman start -f Procfile.test
     environment:
-      DATABASE_URL: "postgis://postgres:12341234@db:5432/database_test"
+      DATABASE_URL: "postgres://postgres:12341234@db:5432/database_test"
       RAILS_ENV: test
       RACK_ENV: test
     ports:

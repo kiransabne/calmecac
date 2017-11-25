@@ -56,6 +56,7 @@ group :test do
   gem "rspec-collection_matchers"
   gem "shoulda-matchers", "~> 3.1"
   gem "warden-rspec-rails"
+  gem "simplecov", require: false
 end
 
 group :production do
