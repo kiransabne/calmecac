@@ -32,6 +32,11 @@
     <%= f.text_field :you_do, placeholder: "What do you do?" %>
   </div>
 
+  <div class="field">
+    <%= f.label :role %>
+    <%= f.select :role, Role.globals, prompt: 'Please select a role' %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Register" %>
   </div>
