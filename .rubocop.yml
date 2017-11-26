@@ -5,6 +5,7 @@ AllCops:
     - config/**/*
     - db/**/*
     - node_modules/**/*
+    - lib/tasks/**/*
     - Guardfile
   TargetRubyVersion: 2.3
 

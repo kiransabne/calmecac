@@ -10,89 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126003746) do
+ActiveRecord::Schema.define(version: 20171126063717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "activities", force: :cascade do |t|
-    t.text "description"
-    t.string "url"
-    t.bigint "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_activities_on_course_id"
-  end
-
-  create_table "badges", force: :cascade do |t|
-    t.string "name"
-    t.integer "kind_id"
-    t.integer "points"
-    t.boolean "default"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.text "objectives", default: [], array: true
+    t.jsonb "sections", default: [], array: true
+    t.jsonb "exam", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["description"], name: "index_courses_on_description"
+    t.index ["exam"], name: "index_courses_on_exam"
+    t.index ["name"], name: "index_courses_on_name"
+    t.index ["objectives"], name: "index_courses_on_objectives"
+    t.index ["sections"], name: "index_courses_on_sections"
   end
 
-  create_table "exams", force: :cascade do |t|
+  create_table "gamification_goals", id: :serial, force: :cascade do |t|
+    t.string "rewarding_type"
+    t.integer "rewarding_id"
+    t.integer "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["rewarding_type", "rewarding_id"], name: "index_gamification_goals_on_rewarding_type_and_rewarding_id"
+  end
+
+  create_table "gamification_medals", id: :serial, force: :cascade do |t|
+    t.integer "goal_id"
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_gamification_medals_on_goal_id"
   end
 
-  create_table "kinds", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "gamification_rewards", id: :serial, force: :cascade do |t|
+    t.integer "goal_id"
+    t.string "rewardable_type"
+    t.integer "rewardable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "seen_at"
+    t.index ["goal_id"], name: "index_gamification_rewards_on_goal_id"
+    t.index ["rewardable_id", "rewardable_type"], name: "index_gamification_scorings_on_subjectable"
+    t.index ["seen_at"], name: "index_gamification_rewards_on_seen_at"
   end
 
-  create_table "levels", force: :cascade do |t|
-    t.integer "badge_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "points", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "kind_id"
-    t.integer "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.text "content"
-    t.bigint "exam_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["exam_id"], name: "index_questions_on_exam_id"
-  end
-
-  create_table "resources", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
+  create_table "inscriptions", force: :cascade do |t|
     t.bigint "course_id"
+    t.boolean "assigned"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cover_file_name"
-    t.string "cover_content_type"
-    t.integer "cover_file_size"
-    t.datetime "cover_updated_at"
-    t.index ["course_id"], name: "index_resources_on_course_id"
-  end
-
-  create_table "responses", force: :cascade do |t|
-    t.text "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["course_id"], name: "index_inscriptions_on_course_id"
   end
 
   create_table "roles", id: :serial, force: :cascade do |t|
@@ -103,37 +79,6 @@ ActiveRecord::Schema.define(version: 20171126003746) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
-  end
-
-  create_table "sections", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "taggings", id: :serial, force: :cascade do |t|
-    t.integer "tag_id"
-    t.string "taggable_type"
-    t.integer "taggable_id"
-    t.string "tagger_type"
-    t.integer "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at"
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-  end
-
-  create_table "tags", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

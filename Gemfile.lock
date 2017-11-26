@@ -1,9 +1,11 @@
 GIT
-  remote: https://github.com/thelastinuit/gioco.git
-  revision: 0b2ca0fb0457c4b9d032309d58e4793af4d942c1
-  branch: 1.1.1
+  remote: https://github.com/thelastinuit/gamification.git
+  revision: e10dc82b81dc3875a77bdcba006146270433dd5b
   specs:
-    gioco (1.1.1)
+    gamification (1.0.3)
+      carrierwave (~> 0.10)
+      mini_magick (~> 3.7)
+      rails (~> 5.1.4)
 
 GEM
   remote: https://rubygems.org/
@@ -83,6 +85,12 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.2.0)
@@ -212,6 +220,8 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
+    mini_magick (3.8.1)
+      subexec (~> 0.2.1)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
@@ -380,6 +390,7 @@ GEM
     sqlite3 (1.3.13)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
+    subexec (0.2.3)
     temple (0.8.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -426,7 +437,7 @@ DEPENDENCIES
   devise-i18n
   factory_bot_rails
   faker
-  gioco!
+  gamification!
   guard-brakeman
   guard-bundler
   guard-bundler-audit

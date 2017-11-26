@@ -5,13 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "acts-as-taggable-on"
 gem "alom"
 gem "aws-sdk-s3"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem "devise-i18n"
-gem "gioco", git: "https://github.com/thelastinuit/gioco.git", branch: "1.1.1"
+gem "gamification", git: "https://github.com/thelastinuit/gamification.git"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "jquery-ui-rails"
@@ -19,9 +18,9 @@ gem "paperclip"
 gem "pg"
 gem "puma", "~> 3.7"
 gem "pundit"
-gem "rolify"
 gem "rails", "~> 5.1.4"
 gem "rails-i18n"
+gem "rolify"
 gem "sass-rails", "~> 5.0"
 gem "therubyracer", platforms: :ruby
 gem "uglifier", ">= 1.3.0"
@@ -56,8 +55,8 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-collection_matchers"
   gem "shoulda-matchers", "~> 3.1"
-  gem "warden-rspec-rails"
   gem "simplecov", require: false
+  gem "warden-rspec-rails"
 end
 
 group :production do
