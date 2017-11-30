@@ -1,8 +1,11 @@
 GIT
-  remote: https://github.com/thelastinuit/gioco.git
-  revision: 9bfda3be1701e985c42b446265c3d8ce16cc892e
+  remote: https://github.com/thelastinuit/gamification.git
+  revision: e10dc82b81dc3875a77bdcba006146270433dd5b
   specs:
-    gioco (2.0.0)
+    gamification (1.0.3)
+      carrierwave (~> 0.10)
+      mini_magick (~> 3.7)
+      rails (~> 5.1.4)
 
 GEM
   remote: https://rubygems.org/
@@ -51,15 +54,15 @@ GEM
     alom (0.1.1)
     arel (8.0.0)
     ast (2.3.0)
-    aws-partitions (1.35.0)
-    aws-sdk-core (3.7.0)
+    aws-partitions (1.39.0)
+    aws-sdk-core (3.9.0)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
     aws-sdk-kms (1.3.0)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
-    aws-sdk-s3 (1.6.0)
+    aws-sdk-s3 (1.7.0)
       aws-sdk-core (~> 3)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)
@@ -75,19 +78,25 @@ GEM
       bundler (~> 1.2)
       thor (~> 0.18)
     byebug (9.1.0)
-    capybara (2.16.0)
+    capybara (2.16.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    codeclimate-engine-rb (0.4.0)
+    codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
     coderay (1.1.2)
     coercible (1.0.0)
@@ -211,6 +220,8 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
+    mini_magick (3.8.1)
+      subexec (~> 0.2.1)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
@@ -242,7 +253,7 @@ GEM
       byebug (~> 9.1)
       pry (~> 0.10)
     public_suffix (3.0.1)
-    puma (3.10.0)
+    puma (3.11.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     pundit-matchers (1.4.1)
@@ -251,7 +262,7 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
-    rack-test (0.7.0)
+    rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
@@ -302,6 +313,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rolify (5.1.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -316,7 +328,7 @@ GEM
     rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
-    rspec-rails (3.7.1)
+    rspec-rails (3.7.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -378,6 +390,7 @@ GEM
     sqlite3 (1.3.13)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
+    subexec (0.2.3)
     temple (0.8.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -424,7 +437,7 @@ DEPENDENCIES
   devise-i18n
   factory_bot_rails
   faker
-  gioco!
+  gamification!
   guard-brakeman
   guard-bundler
   guard-bundler-audit
@@ -449,6 +462,7 @@ DEPENDENCIES
   rails-i18n
   rails_12factor
   reek
+  rolify
   rspec-collection_matchers
   rspec-rails
   rubocop

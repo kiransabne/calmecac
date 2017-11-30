@@ -1,0 +1,33 @@
+<div>
+  <div>
+    <%= image_tag current_user.avatar.url %>
+  </div>
+  <div>
+    <div>
+      My Classroom
+    </div>
+    <div>
+      <%= current_user.name %>
+    </div>
+    <div>
+      <%= current_user.rewards.last %>
+    </div>
+  </div>
+  <div>
+    <div>
+      My active courses
+    </div>
+    <div>
+      <% current_user.inscriptions.active.each do |active_inscription| %>
+        <div>
+          <div>
+            <%= active_inscription.course.name %>
+          </div>
+          <div>
+            
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
