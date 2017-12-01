@@ -1,6 +1,7 @@
 # EPICK
 
 ![Made with Love by Icalia Labs](https://img.shields.io/badge/With%20love%20by-Icalia%20Labs-ff3434.svg)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
 It is an online learning platform that allows users to create content, manage progress and spread culture remotely

@@ -1,0 +1,13 @@
+<div>
+  <div>
+    <%= resource["title"] %>
+  </div>
+
+  <div>
+    <%= YouTubeAddy.youtube_embed_url(resource["link"], 420, 315).html_safe %>
+  </div>
+
+  <div>
+    <%= link_to "play on youtube", "#{resource['link']}" %>
+  </div>
+</div>

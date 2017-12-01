@@ -1,0 +1,67 @@
+<div>
+  <div>
+    Course
+  </div>
+
+  <div>
+    <%= @inscription.course_name %>
+  </div>
+
+  <div>
+    <%= @inscription.sections.keys.count %> Modules
+  </div>
+
+  <div>
+    <%= @inscription.course_description %>
+  </div>
+
+  <div>
+    <ul>
+      <% @inscription.course_objectives.each do |objective| %>
+        <li> <%= objective %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <%= link_to 'Start', edit_inscription_path(@inscription) %>
+  </div>
+</div>
+
+<div>
+  <% @inscription.sections.each do |section_id, section| %>
+    <div>
+      <div>
+        <%= section["title"] %>
+      </div>
+      <div>
+        <div>
+          <div>
+            Resources
+          </div>
+          <div>
+            <%= section["resources"].count %>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            Activities
+          </div>
+          <div>
+            <%= section["activities"].count %>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            Exam
+          </div>
+          <div>
+            <%= section["exam"]["score"] %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

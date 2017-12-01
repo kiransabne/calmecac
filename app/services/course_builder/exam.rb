@@ -16,7 +16,8 @@ module CourseBuilder
     def question(content)
       return if content.blank?
 
-      @exam[:questions] << content
+      question = CourseBuilder::Question.new(content)
+      @exam[:questions] << question.to_hash
     end
 
     def to_hash

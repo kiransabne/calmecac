@@ -24,6 +24,7 @@ gem "rolify"
 gem "sass-rails", "~> 5.0"
 gem "therubyracer", platforms: :ruby
 gem "uglifier", ">= 1.3.0"
+gem "youtube_addy", git: "https://github.com/thelastinuit/youtube_addy.git"
 
 group :development, :test do
   gem "brakeman", require: false

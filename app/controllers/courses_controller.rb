@@ -1,19 +1,22 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[show edit update destroy]
+  before_action :set_course, only: %i[show edit update inscribe]
 
   def index
+    authorize Course
     @courses = Course.all
   end
 
-  def show; end
-
   def new
+    authorize Course
     @course = Course.new
   end
 
-  def edit; end
+  def edit
+    authorize @course
+  end
 
   def create
+    authorize Course
     @course = Course.new(course_params)
 
     if @course.save
@@ -24,6 +27,8 @@ class CoursesController < ApplicationController
   end
 
   def update
+    authorize @course
+
     if @course.update(course_params)
       redirect_to @course, notice: "Course was successfully updated."
     else
@@ -31,9 +36,17 @@ class CoursesController < ApplicationController
     end
   end
 
-  def destroy
-    if @course.destroy
-      redirect_to courses_url, notice: "Course was successfully destroyed."
+  def inscribe
+    authorize @course
+    inscription = Inscription.new user: current_user,
+                                  course: @course,
+                                  sections: @course.sections,
+                                  status: :in_progress
+
+    if inscription.save
+      redirect_to my_classroom_path, notice: "Your inscription was successful."
+    else
+      redirect_to courses_path, notice: "Your inscription was not sucessful."
     end
   end
 

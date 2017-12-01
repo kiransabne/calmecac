@@ -5,8 +5,7 @@ module CourseBuilder
         name: name,
         description: "",
         objectives: [],
-        sections: [],
-        exam: {}
+        sections: []
       }
     end
 
@@ -17,15 +16,6 @@ module CourseBuilder
       section_builder.instance_eval(&block)
 
       @data[:sections] << section_builder.to_hash
-    end
-
-    def exam(&block)
-      return unless block_given?
-
-      exam_builder = CourseBuilder::Exam.new
-      exam_builder.instance_eval(&block)
-
-      @data[:exam] = exam_builder.to_hash
     end
 
     def description(content)

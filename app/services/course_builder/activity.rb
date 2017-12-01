@@ -3,7 +3,6 @@ module CourseBuilder
     def initialize(title)
       @activity = {
         title: title,
-        activity: "",
         url: "",
         questions: []
       }
@@ -24,7 +23,8 @@ module CourseBuilder
     def question(content)
       return if content.blank?
 
-      @activity[:questions] << content
+      question = CourseBuilder::Question.new(content)
+      @activity[:questions] << question.to_hash
     end
 
     def to_hash

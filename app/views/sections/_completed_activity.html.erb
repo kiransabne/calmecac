@@ -1,0 +1,39 @@
+<div>
+  <div>
+    <%= activity["title"] %>
+  </div>
+
+  <div>
+    Activity work
+  </div>
+
+  <div>
+    <%= activity["description"] %>
+  </div>
+
+  <div>
+    <div>
+      link:
+    </div>
+
+    <div>
+      <%= link_to activity["url"] do %>
+        <%= activity["url"] %>
+      <% end %>
+    </div>
+
+    <div>
+      <% activity["questions"].each do |question_id, question| %>
+        <div>
+          <%= question["content"] %>
+        </div>
+        <div>
+          <%= question["answer"] %>
+        </div>
+      <% end %>
+      <div>
+        Completed!
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div>
+  course: <%= @inscription.course_name %>
+</div>
+
+<div>
+  <%= @section["title"] %>
+</div>
+
+<div>
+  <div>
+    Resources
+  </div>
+
+  <div>
+    <ul>
+      <% @section["resources"].each do |resource| %>
+        <%= resource["title"] %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <div>
+    Activities
+  </div>
+
+  <div>
+    <ul>
+      <% @section["activities"].each do |activity_id, activity| %>
+        <%= activity["title"] %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <div>
+    Exam
+  </div>
+
+  <div>
+    <%= @section["title"] %> Exam
+  </div>
+</div>
+
+<% @section["resources"].each do |resource| %>
+  <%= render 'resource', resource: resource %>
+<% end %>
+
+<% @section["activities"].each do |activity_id, activity| %>
+  <% if activity["completed"] %>
+    <%= render 'completed_activity', activity: activity %>
+  <% else %>
+    <%= render 'activity', activity: activity, activity_id: activity_id, inscription: @inscription, section_id: @section_id %>
+  <% end %>
+<% end %>
+
+<%= render 'exam', exam: @section["exam"], inscription: @inscription, section_id: @section_id %>

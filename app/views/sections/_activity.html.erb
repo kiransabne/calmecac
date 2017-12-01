@@ -1,0 +1,42 @@
+<div id="activity-<%= activity_id %>">
+  <div>
+    <%= activity["title"] %>
+  </div>
+
+  <div>
+    Activity work
+  </div>
+
+  <div>
+    <%= activity["description"] %>
+  </div>
+
+  <div>
+    <div>
+      link:
+    </div>
+
+    <div>
+      <%= link_to activity["url"] do %>
+        <%= activity["url"] %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form_for :activity, url: "/inscriptions/#{inscription.id}/sections/#{section_id}/activities/#{activity_id}", method: :put, remote: true do |f| %>
+        <% activity["questions"].each do |question_id, question| %>
+          <div>
+            <%= question["content"] %>
+            <%= f.fields_for :questions do |q| %>
+              <%= q.text_field question_id %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div>
+          <%= f.submit 'Finish activity' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

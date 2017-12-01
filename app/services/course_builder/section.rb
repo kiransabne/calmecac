@@ -26,6 +26,15 @@ module CourseBuilder
       @section[:activities] << activity_builder.to_hash
     end
 
+    def exam(&block)
+      return unless block_given?
+
+      exam_builder = CourseBuilder::Exam.new
+      exam_builder.instance_eval(&block)
+
+      @section[:exam] = exam_builder.to_hash
+    end
+
     def to_hash
       @section
     end

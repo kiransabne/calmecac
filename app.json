@@ -1,0 +1,7 @@
+{
+  "name": "Calmecac | A minimal E-learning platform.",
+  "description": "Calmecac is a e-learning school with the minimal requirement to start creating ecourse.",
+  "repository": "https://github.com/icalialabs/epick",
+  "logo": "https://epick-staging.herokuapp.com/calmecac.png",
+    "keywords": ["ruby", "rails", "e-learning", "lms"]
+}

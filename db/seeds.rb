@@ -17,12 +17,12 @@ data = CourseBuilder.create "Dynamics of the Spacetime Continuum" do
       url "https://arxiv.org/pdf/1609.01496.pdf"
       question "How does the quantized massless Klein-Gordon field works on the Politzer spacetime?"
     end
-  end
 
-  exam do
-    description "Please review the resources and activies given before."
-    question "How can we cheat quantum communication with backward time-steps?"
-    question "Is it possible to create a non-negative metric that allow us quantum communication at room temperature?"
+    exam do
+      description "Please review the resources and activies given before."
+      question "How can we cheat quantum communication with backward time-steps?"
+      question "Is it possible to create a non-negative metric that allow us quantum communication at room temperature?"
+    end
   end
 end
 

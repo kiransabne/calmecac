@@ -1,0 +1,33 @@
+<div>
+  <%= @inscription.course_name %> Exam
+</div>
+
+<div>
+  <div>
+    Module Exam
+  </div>
+
+  <div>
+    <%= exam["description"] %>
+  </div>
+
+  <div>
+    <%= form_for :exam, url: "/inscriptions/#{inscription.id}/sections/#{section_id}", method: :put do |f| %>
+      <% exam["questions"].each do |question_id, question| %>
+        <div>
+          <%= question["content"] %>
+        </div>
+        <div>
+          <%= f.fields_for :questions do |q| %>
+            <%= q.text_field question_id %>
+          <% end %>
+        </div>
+
+        <div>
+        </div>
+      <% end %>
+
+      <%= f.submit 'Finish exam' %>
+    <% end %>
+  </div>
+</div>

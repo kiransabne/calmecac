@@ -1,7 +1,3 @@
 class UserPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope
-    end
-  end
+  class Scope < Scope; end
 end

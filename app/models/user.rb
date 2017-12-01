@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/user_placeholder.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   attr_accessor :role
@@ -20,5 +20,13 @@ class User < ApplicationRecord
              :student
            end
     add_role role
+  end
+
+  def inscribed?(course)
+    inscriptions.where(course_id: course.id).present?
+  end
+
+  def inscription_for(course)
+    inscriptions.find_by(course_id: course.id)
   end
 end
