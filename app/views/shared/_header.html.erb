@@ -1,5 +1,6 @@
 <div class=''>calmecac</div>
 
 <%= link_to "Courses", courses_path %>
-<%= link_to "My Classroom", my_classroom_path if user_signed_in? %>
+<%= link_to "My Classroom", my_classroom_path if student_signed_in? %>
+<%= link_to "My Courses", my_courses_path if teacher_signed_in? %>
 <%= link_to "Register", new_registration_path(:user) if !user_signed_in? %>

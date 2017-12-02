@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get 'my_classroom', to: 'my_classroom#index'
+  get 'my_courses', to: 'my_courses#index'
 
   root to: 'home#index'
 end

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Courses</h1>
+
+<% @courses.each do |course| %>
+  <div>
+    <div>
+      <%= course.name %>
+    </div>
+
+    <div>
+      <%= course.description %>
+    </div>
+
+    <div>
+      <% course.objectives.each do |objective| %>
+        <div>
+          <%= objective %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to 'Edit', edit_course_path(course) if policy(course).edit? %>
+  </div>
+
+  <% if policy(course).inscribe? %>
+    <div>
+      <%= link_to 'Inscribe', inscribe_course_path(course), method: :post %>
+    </div>
+  <% else %>
+    <% if current_user.inscribed? course %>
+      <%= link_to 'Inscribed', inscription_path(current_user.inscription_for(course)) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to 'New Course', new_course_path if policy(Course).new? %>

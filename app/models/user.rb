@@ -3,6 +3,7 @@ class User < ApplicationRecord
   rewardable
 
   has_many :inscriptions, dependent: :destroy
+  has_many :courses, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126063717) do
+ActiveRecord::Schema.define(version: 20171126062819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 20171126063717) do
     t.text "description"
     t.text "objectives", default: [], array: true
     t.jsonb "sections", default: [], array: true
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["description"], name: "index_courses_on_description"
     t.index ["name"], name: "index_courses_on_name"
     t.index ["objectives"], name: "index_courses_on_objectives"
     t.index ["sections"], name: "index_courses_on_sections"
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "gamification_goals", id: :serial, force: :cascade do |t|
@@ -61,14 +63,15 @@ ActiveRecord::Schema.define(version: 20171126063717) do
 
   create_table "inscriptions", force: :cascade do |t|
     t.bigint "course_id"
+    t.bigint "user_id"
     t.boolean "assigned", default: false
     t.integer "status", default: 0
     t.jsonb "sections", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["course_id"], name: "index_inscriptions_on_course_id"
     t.index ["sections"], name: "index_inscriptions_on_sections"
+    t.index ["user_id"], name: "index_inscriptions_on_user_id"
   end
 
   create_table "roles", id: :serial, force: :cascade do |t|

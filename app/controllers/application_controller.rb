@@ -7,6 +7,17 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def teacher_signed_in?
+    current_user&.has_role? :teacher
+  end
+
+  def student_signed_in?
+    current_user&.has_role? :student
+  end
+
+  helper_method :teacher_signed_in?
+  helper_method :student_signed_in?
+
   protected
 
   def configure_permitted_parameters

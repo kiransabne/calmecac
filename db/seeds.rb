@@ -1,3 +1,6 @@
+user = User.create name: "Pablo Rocha", email: "pablo@icalialabs.com", password: "12341234", password_confirmation: "12341234"
+user.add_role :teacher
+
 data = CourseBuilder.create "Dynamics of the Spacetime Continuum" do
   description "How the Spacetime Continuum works? In this course will see through all the mysterios of the matter."
   objective "Understand the basic of QED"
@@ -26,4 +29,6 @@ data = CourseBuilder.create "Dynamics of the Spacetime Continuum" do
   end
 end
 
-Course.create data
+course = Course.new data
+course.user = user
+course.save
