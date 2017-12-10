@@ -1,12 +1,13 @@
 <%= form_with(model: course, local: true) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <% if course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>
-      <% course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -34,3 +35,11 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+ $(function() {
+   var courseBuilder = new window.courseBuilder()
+   courseBuilder.init()
+ });
+</script>
+

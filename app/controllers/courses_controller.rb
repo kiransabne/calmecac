@@ -17,10 +17,53 @@ class CoursesController < ApplicationController
 
   def create
     authorize Course
-    @course = Course.new(course_params)
+
+    params = course_params
+
+    data = CourseBuilder.create params["name"] do
+      description params["description"]
+
+      params["objectives"].split(",").each do
+        objective "Understand the basic of QED"
+        objective "QED with differente metrics"
+      end
+
+      params["sections"].values.each do |section_params|
+        section section_params["name"] do
+          section_params["resources"].values.each do |resource_params|
+            resource resource_params["name"] do
+              link resource_params["link"]
+            end
+          end
+
+          section_params["activities"].values.each do |activity_params|
+            activity activity_params["name"] do
+              description activity_params["description"]
+              url activity_params["url"]
+
+              activity_params["questions"].values.each do |question_value|
+                question question_value
+              end
+            end
+          end
+
+          exam do
+            description section_params["exam"].values.first["description"]
+
+            section_params["exam"].values.first["questions"].values.each do |question_value|
+              question question_value
+            end
+          end
+        end
+      end
+    end
+
+    data.merge!(user_id: course_params[:user_id])
+
+    @course = Course.new(data)
 
     if @course.save
-      redirect_to @course, notice: "Course was successfully created."
+      redirect_to @my_courses, notice: "Course was successfully created."
     else
       render :new
     end
@@ -57,6 +100,6 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:name, :description, :objectives)
+    params.require(:course).permit(:name, :description, :objectives, :user_id, sections: {})
   end
 end

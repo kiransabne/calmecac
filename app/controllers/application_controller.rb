@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  use_growlyflash
+
   def teacher_signed_in?
     current_user&.has_role? :teacher
   end
