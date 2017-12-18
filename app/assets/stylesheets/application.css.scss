@@ -1,9 +1,15 @@
 @import 'alom/base';
 @import 'navbar';
 @import 'sessions';
+@import 'myclassroom';
 
 body {
   font-family: $secondary-font;
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
 }
 
 .main-title {
@@ -12,6 +18,21 @@ body {
   font-size: px-to-rems(36);
   font-weight: 700;
   margin-bottom: px-to-rems(15);
+}
+
+.mono-title {
+  color: $secondary-color;
+  font-family: $secondary-font;
+  font-size: px-to-rems(18);
+  margin-bottom: px-to-rems(10);
+  text-transform: uppercase;
+}
+
+.mono-subtitle {
+  color: $secondary-color;
+  font-family: $secondary-font;
+  font-size: px-to-rems(16);
+  margin-bottom: px-to-rems(10);
 }
 
 .button-std {

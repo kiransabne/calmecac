@@ -1,58 +1,78 @@
 <div>
-  <div>
-    <%= image_tag current_user.avatar.url %>
-  </div>
-
-  <div>
-    <div>
-      My Classroom
-    </div>
-    <div>
-      <%= current_user.name %>
-    </div>
-    <div>
-      <%= current_user.rewards.last %>
-    </div>
-    <div>
-      <%= current_user.inscriptions.completed.count %> Courses completed
-    </div>
-  </div>
-
-  <div>
-    <div>
-      My active courses
-    </div>
-    <div>
-      <% current_user.inscriptions.in_progress.each do |in_progress_inscription| %>
-        <%= link_to inscription_path in_progress_inscription do %>
-          <div>
-            <div>
-              <%= in_progress_inscription.course.name %>
-            </div>
-            <div>
-              <%= in_progress_inscription.progress.completed_sections %> / <%= in_progress_inscription.progress.total_sections %> Modules
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div>
-    <div>
-      My completed courses
-    </div>
-    <div>
-      <% current_user.inscriptions.completed.each do |completed_inscription| %>
-        <div>
-          <div>
-            <%= completed_inscription.course.name %>
-          </div>
-          <div>
-            <%= completed_inscription.progress.total_sections %> Modules
+  <div class="myclassroom__header">
+    <div class="container">
+      <div class="row">
+        <div class="col-3 text-center">
+          <div class="myclassroom__profile-pic">
+            <%= image_tag current_user.avatar.url, class:"myclassroom__profile-pic-img" %>
           </div>
         </div>
-      <% end %>
+
+        <div class="col-4">
+          <div class="myclassroom__stats">
+            <div class="mono-title">
+              My Classroom
+            </div>
+            <div class="main-title">
+              <%= current_user.name %>
+            </div>
+            <div>
+              <%= current_user.rewards.last %>
+            </div>
+            <div class="mono-subtitle">
+              <%= current_user.inscriptions.completed.count %> Courses completed
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="myclassroom__activity">
+    <div class="container">
+      <div class="row">
+        <div class="myclassroom__activity-active">
+          <div class="main-title">
+            My active courses
+          </div>
+          <div>
+            <% current_user.inscriptions.in_progress.each do |in_progress_inscription| %>
+              <%= link_to inscription_path in_progress_inscription do %>
+                <div>
+                  <div>
+                    <%= in_progress_inscription.course.name %>
+                  </div>
+                  <div>
+                    <%= in_progress_inscription.progress.completed_sections %> / <%= in_progress_inscription.progress.total_sections %> Modules
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="myclassroom__activity-past">
+          <div class="main-title">
+            My completed courses
+          </div>
+          <div>
+            <% current_user.inscriptions.completed.each do |completed_inscription| %>
+              <div>
+                <div>
+                  <%= completed_inscription.course.name %>
+                </div>
+                <div>
+                  <%= completed_inscription.progress.total_sections %> Modules
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
