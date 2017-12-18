@@ -30,5 +30,5 @@ data = CourseBuilder.create "Dynamics of the Spacetime Continuum" do
 end
 
 course = Course.new data
-course.user = user
+course.user_id = user.id
 course.save
