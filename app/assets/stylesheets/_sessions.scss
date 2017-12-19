@@ -1,0 +1,34 @@
+.registration-container {
+  background-color: $primary-color;
+  height: 800px;
+  text-align: center;
+
+  &__label {
+    font-size: px-to-rems(13);
+  }
+
+  &__input {
+    background: transparent;
+    border: px-to-rems(2) solid $secondary-color;
+    border-radius: px-to-rems(5);
+    color: #000;
+    font-family: $secondary-font;
+    margin: px-to-rems(5) px-to-rems(10) px-to-rems(20) px-to-rems(10);
+    padding: px-to-rems(10);
+    text-align: center;
+    width: px-to-rems(300);
+  }
+
+  #user_role {
+    background: transparent;
+    border: px-to-rems(2) solid $secondary-color;
+    border-radius: px-to-rems(5);
+    color: #000;
+    font-family: $secondary-font;
+    height: px-to-rems(40);
+    margin: px-to-rems(10) px-to-rems(10) px-to-rems(20) px-to-rems(10);
+    padding: px-to-rems(10);
+    text-align: center;
+    width: px-to-rems(300);
+  }
+}

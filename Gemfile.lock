@@ -55,7 +55,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    alom (0.1.1)
     arel (8.0.0)
     ast (2.3.0)
     aws-partitions (1.39.0)
@@ -429,7 +428,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alom
   aws-sdk-s3
   brakeman
   bundler-audit

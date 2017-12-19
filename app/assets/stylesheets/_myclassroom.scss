@@ -1,0 +1,27 @@
+.myclassroom__header {
+  background: $primary-color;
+  padding: px-to-rems(50) 0;
+}
+
+.myclassroom__profile-pic {
+  display: inline-block;
+
+  &-img {
+    border-radius: px-to-rems(100);
+    height: px-to-rems(170);
+  }
+}
+
+.myclassroom__stats {
+  display: inline-block;
+}
+
+.myclassroom__activity-active {
+  padding: px-to-rems(30) 0;
+  text-align: center;
+}
+
+.myclassroom__activity-past {
+  padding: px-to-rems(30) 0;
+  text-align: center;
+}

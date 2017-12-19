@@ -1,0 +1,23 @@
+.navbar {
+  background: $primary-color;
+  color: $secondary-color;
+  font-family: $secondary-font;
+  height: px-to-rems(100);
+  padding: px-to-rems(0) px-to-rems(50);
+
+  &-logo {
+    display: inline-block;
+  }
+
+  &-links {
+    display: inline-block;
+
+    &-item {
+      margin: 0 px-to-rems(10);
+    }
+
+    &-item:hover {
+      text-decoration: underline;
+    }
+  }
+}

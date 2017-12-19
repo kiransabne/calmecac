@@ -1,45 +1,49 @@
-<h2>Sign up</h2>
+<div class="registration-container">
+  <div class="align vertical">
+    <h2 class="main-title">Join the fun!</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true } ) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true } ) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.file_field :avatar %>
+      <div class="field">
+        <%= f.file_field :avatar %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name, class: 'registration-container__label' %><br />
+        <%= f.text_field :name, autofocus: true, placeholder: "Name", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, class: 'registration-container__label' %><br />
+        <%= f.email_field :email, placeholder: "E-mail", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: 'registration-container__label' %><br />
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: 'registration-container__label' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :you_do, class: 'registration-container__label' %><br />
+        <%= f.text_field :you_do, placeholder: "What do you do?", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :role, class: 'registration-container__label' %> <br />
+        <%= f.select :role, Role.globals, class: 'registration-container__input', prompt: 'Please select a role'  %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Register", class: 'button-std' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, placeholder: "Name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, placeholder: "E-mail" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :you_do %><br />
-    <%= f.text_field :you_do, placeholder: "What do you do?" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :role %>
-    <%= f.select :role, Role.globals, prompt: 'Please select a role' %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Register" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
