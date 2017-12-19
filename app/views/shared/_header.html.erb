@@ -5,6 +5,7 @@
     <%= link_to "Courses", courses_path, class: 'navbar-links-item' %>
     <%= link_to "My Classroom", my_classroom_path, class: 'navbar-links-item' if student_signed_in? %>
     <%= link_to "My Courses", my_courses_path, class: 'navbar-links-item' if teacher_signed_in? %>
+    <%= link_to "Edit Profile", edit_user_path, class: 'navbar-links-item' if user_signed_in? %>
     <%= link_to "Register",  new_registration_path(:user), class: 'button-outline__min' if !user_signed_in? %>
   </div>
 </div>

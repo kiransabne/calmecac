@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: {
+               registrations: "registrations"
+             }
 
   resources :courses do
     member do
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'edit_user', to: 'users#edit'
+  put 'update_user', to: 'users#update'
   get 'my_classroom', to: 'my_classroom#index'
   get 'my_courses', to: 'my_courses#index'
 

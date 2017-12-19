@@ -1,0 +1,33 @@
+<div class="registration-container">
+  <div class="align vertical">
+    <%= form_for(current_user, as: "user", url: update_user_path, html: { multipart: true, method: :put } ) do |f| %>
+      <div class="field">
+        <%= f.file_field :avatar %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name, class: 'registration-container__label' %><br />
+        <%= f.text_field :name, autofocus: true, placeholder: "Name", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: 'registration-container__label' %><br />
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: 'registration-container__label' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: 'registration-container__input' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :you_do, class: 'registration-container__label' %><br />
+        <%= f.text_field :you_do, placeholder: "What do you do?", class: 'registration-container__input' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Update", class: 'button-std' %>
+      </div>
+    <% end %>
+  </div>
+</div>
