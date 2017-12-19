@@ -1,67 +1,78 @@
-<div>
-  <div>
-    Course
-  </div>
+<div class="row">
+  <div class="col-6">
+    <div class="inscription-overview text-center">
+      <div class="container align vertical">
+        <div class="mono-title">
+          Course
+        </div>
 
-  <div>
-    <%= @inscription.course_name %>
-  </div>
+        <div class="main-title">
+          <%= @inscription.course_name %>
+        </div>
 
-  <div>
-    <%= @inscription.sections.keys.count %> Modules
-  </div>
+        <div class="mono-subtitle__alt">
+          <%= @inscription.sections.keys.count %> Modules
+        </div>
 
-  <div>
-    <%= @inscription.course_description %>
-  </div>
+        <div class="inscription-text">
+          <%= @inscription.course_description %>
+        </div>
 
-  <div>
-    <ul>
-      <% @inscription.course_objectives.each do |objective| %>
-        <li> <%= objective %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div>
-    <%= link_to 'Start', edit_inscription_path(@inscription) %>
-  </div>
-</div>
-
-<div>
-  <% @inscription.sections.each do |section_id, section| %>
-    <div>
-      <div>
-        <%= section["title"] %>
-      </div>
-      <div>
-        <div>
-          <div>
-            Resources
+        <div class="inscription-text">
+          <div class="mono-title">
+            Objectives
           </div>
-          <div>
-            <%= section["resources"].count %>
-          </div>
+          <ul>
+            <% @inscription.course_objectives.each do |objective| %>
+              <li> <%= objective %></li>
+            <% end %>
+          </ul>
         </div>
 
         <div>
-          <div>
-            Activities
-          </div>
-          <div>
-            <%= section["activities"].count %>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            Exam
-          </div>
-          <div>
-            <%= section["exam"]["score"] %>
-          </div>
+          <%= link_to 'Start', edit_inscription_path(@inscription), class:'button-alt' %>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
+
+  <div class="col-6">
+    <div class="container">
+      <% @inscription.sections.each do |section_id, section| %>
+        <div class="inscription-overview__module text-center">
+          <div class="dark-title">
+            <%= section["title"] %>
+          </div>
+          <div class="inscription-overview__module-stats">
+            <div class="inscription-overview__module-indicator">
+              <div>
+                Resources
+              </div>
+              <div class="mono-subtitle">
+                <%= section["resources"].count %>
+              </div>
+            </div>
+
+            <div class="inscription-overview__module-indicator">
+              <div>
+                Activities
+              </div>
+              <div class="mono-subtitle">
+                <%= section["activities"].count %>
+              </div>
+            </div>
+
+            <div class="inscription-overview__module-indicator">
+              <div>
+                Exam
+              </div>
+              <div class="mono-subtitle">
+                <%= section["exam"]["score"] %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
