@@ -2,6 +2,7 @@
 @import 'navbar';
 @import 'sessions';
 @import 'myclassroom';
+@import 'inscriptions';
 
 body {
   font-family: $secondary-font;
@@ -20,6 +21,14 @@ body {
   margin-bottom: px-to-rems(15);
 }
 
+.dark-title {
+  color: #000;
+  font-family: $primary-font;
+  font-size: px-to-rems(36);
+  font-weight: 700;
+  margin-bottom: px-to-rems(15);
+}
+
 .mono-title {
   color: $secondary-color;
   font-family: $secondary-font;
@@ -30,6 +39,13 @@ body {
 
 .mono-subtitle {
   color: $secondary-color;
+  font-family: $secondary-font;
+  font-size: px-to-rems(16);
+  margin-bottom: px-to-rems(10);
+}
+
+.mono-subtitle__alt {
+  color: $alternative-color;
   font-family: $secondary-font;
   font-size: px-to-rems(16);
   margin-bottom: px-to-rems(10);
@@ -62,6 +78,33 @@ body {
   margin: px-to-rems(15) 0;
   text-transform: uppercase;
   width: px-to-rems(250);
+}
+
+.button-alt {
+  background: $alternative-color;
+  border-radius: px-to-rems(40);
+  border: px-to-rems(2) solid $alternative-color;
+  color: $primary-color;
+  font-family: $primary-font;
+  font-size: px-to-rems(18);
+  font-weight: 700;
+  letter-spacing: px-to-rems(2);
+  margin: px-to-rems(15) 0;
+  padding: px-to-rems(10) px-to-rems(50);
+  transition: all .3s ease;
+}
+
+.button-alt:hover {
+  background: transparent;
+  border-radius: px-to-rems(40);
+  border: px-to-rems(2) solid $alternative-color;
+  color: $alternative-color;
+  font-family: $primary-font;
+  font-size: px-to-rems(18);
+  font-weight: 700;
+  letter-spacing: px-to-rems(2);
+  margin: px-to-rems(15) 0;
+  padding: px-to-rems(10) px-to-rems(50);
 }
 
 .button-outline__min {
