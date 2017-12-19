@@ -17,11 +17,29 @@
 }
 
 .myclassroom__activity-active {
-  padding: px-to-rems(30) 0;
+  padding: px-to-rems(50) 0;
   text-align: center;
+
+  .main-title {
+    margin-bottom: px-to-rems(50);
+  }
+
+  .row {
+    margin-bottom: px-to-rems(50);
+  }
 }
 
 .myclassroom__activity-past {
   padding: px-to-rems(30) 0;
   text-align: center;
+}
+
+.myclassroom__course {
+  background: $primary-color;
+  border-radius: px-to-rems(5);
+  height: px-to-rems(150);
+  margin: 0 auto;
+  padding: px-to-rems(10) 0;
+  text-align: center;
+  width: 90%;
 }
