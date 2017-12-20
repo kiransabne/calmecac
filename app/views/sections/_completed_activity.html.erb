@@ -1,38 +1,37 @@
-<div>
-  <div>
-    <%= activity["title"] %>
-  </div>
-
-  <div>
-    Activity work
-  </div>
-
-  <div>
-    <%= activity["description"] %>
-  </div>
-
-  <div>
-    <div>
-      link:
-    </div>
-
-    <div>
-      <%= link_to activity["url"] do %>
-        <%= activity["url"] %>
-      <% end %>
-    </div>
-
-    <div>
-      <% activity["questions"].each do |question_id, question| %>
-        <div>
-          <%= question["content"] %>
-        </div>
-        <div>
-          <%= question["answer"] %>
-        </div>
-      <% end %>
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="module__resource-card">
       <div>
-        Completed!
+        <div>
+          <p class="mono-subtitle__alt">Activity</p>
+          <p class="dark-title"><%= activity["title"] %></p>
+        </div>
+
+        <div class="text-std">
+          <%= activity["description"] %>
+        </div>
+
+        <div>
+          <div class="module__resource-card-link">
+            <%= link_to activity["url"], class:'button-link' do %>
+              <%= activity["url"] %>
+            <% end %>
+          </div>
+
+          <div>
+            <% activity["questions"].each do |question_id, question| %>
+              <div class="text-std">
+                <%= question["content"] %>
+              </div>
+              <div class="text-std-alt">
+                <%= question["answer"] %>
+              </div>
+            <% end %>
+            <div class="mono-subtitle__alt">
+              Completed!
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
