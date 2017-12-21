@@ -1,6 +1,7 @@
 @import 'alom/base';
 @import 'navbar';
 @import 'sessions';
+@import 'landing';
 @import 'myclassroom';
 @import 'inscriptions';
 @import 'courses';
@@ -20,6 +21,7 @@ body {
   font-family: $primary-font;
   font-size: px-to-rems(36);
   font-weight: 700;
+  line-height: px-to-rems(48);
   margin-bottom: px-to-rems(15);
 }
 
@@ -33,6 +35,14 @@ body {
 
 .dark-title {
   color: #4A4A4A;
+  font-family: $primary-font;
+  font-size: px-to-rems(36);
+  font-weight: 700;
+  margin-bottom: px-to-rems(15);
+}
+
+.light-title {
+  color: $primary-color;
   font-family: $primary-font;
   font-size: px-to-rems(36);
   font-weight: 700;
