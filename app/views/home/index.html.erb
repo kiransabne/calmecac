@@ -1,5 +1,57 @@
-education is the most powerful weapon you can use to change the world
-
-<% if !user_signed_in? %>
-  <%= link_to "Register", new_registration_path(:user) %><br />
-<% end -%>
+<div class="landing__container">
+  <div class="landing__header">
+    <div class="align vertical">
+      <div class="row">
+        <div class="col-6 offset-3">
+          <%= image_tag 'logo-full.svg', class:'landing__header-logo' %>
+          <h1 class="main-title">The learning platform where everybody learns and everybody wins</h1>
+          <% if !user_signed_in? %>
+            <%= link_to "Join the fun", new_registration_path(:user), class:'button-alt' %>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="landing__intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="landing__intro-course">
+            <h1 class="light-title">Pick a course that interests you</h1>
+            <%= image_tag 'pick-course.svg', class:'landing__intro-icon' %>
+            <p class="landing__intro-course-text">
+              You can browse through the Course library until you find something that interests you.
+            </p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="landing__intro-medals">
+            <h1 class="main-title">Win medals by taking courses</h1>
+            <%= image_tag 'medal-course.svg', class:'landing__intro-icon' %>
+            <p class="landing__intro-medals-text">
+              Effort deserves reward, the more courses you take, the more medals you can recieve
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="landing__outro">
+            <h1 class="landing__outro-title">
+              <span>Calmecac</span> <i>(n)</i>—<br>
+              An ancient aztec education and spiritual growth center.
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 offset-3">
+          <div class="landing__footer">
+            <%= image_tag 'symbol-logo.svg', class:'landing__footer-logo' %>
+            <p class="text-std">Powered by <a class="button-link" href="http://www.icalialabs.com">Icalia Labs</a> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+.landing__container {
+  background: $primary-color;
+}
+
+.landing__header {
+  height: px-to-rems(720);
+  text-align: center;
+
+  &-logo {
+    margin-bottom: px-to-rems(100);
+  }
+
+  .main-title {
+    padding-bottom: px-to-rems(75);
+  }
+}
+
+.landing__intro {
+  text-align: center;
+
+  &-course {
+    background: $secondary-color;
+    margin: 0 auto;
+    max-width: px-to-rems(500);
+    padding: px-to-rems(75) px-to-rems(25);
+
+    &-text {
+      color: $primary-color;
+      font-size: px-to-rems(14);
+      line-height: px-to-rems(22);
+    }
+  }
+
+  &-medals {
+    background: #fff;
+    margin: px-to-rems(250) auto 0;
+    max-width: px-to-rems(500);
+    padding: px-to-rems(75) px-to-rems(25);
+
+    &-text {
+      color: $secondary-color;
+      font-size: px-to-rems(14);
+      line-height: px-to-rems(22);
+    }
+  }
+
+  &-icon {
+    margin: px-to-rems(75) 0;
+  }
+}
+
+.landing__outro {
+  padding: px-to-rems(50) 0;
+  text-align: left;
+
+  &-title {
+    color: $alternative-color;
+    font-family: $primary-font;
+    font-size: px-to-rems(24);
+    line-height: px-to-rems(48);
+    margin-bottom: px-to-rems(15);
+
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.landing__footer {
+  padding: px-to-rems(50) 0;
+  text-align: center;
+
+  &-logo {
+    margin-bottom: px-to-rems(30);
+  }
+}
