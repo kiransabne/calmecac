@@ -58,7 +58,7 @@ class CoursesController < ApplicationController
       end
     end
 
-    data.merge!(user_id: course_params[:user_id])
+    data[:user_id] = course_params[:user_id]
 
     @course = Course.new(data)
 

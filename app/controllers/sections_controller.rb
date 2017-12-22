@@ -20,7 +20,7 @@ class SectionsController < ApplicationController
   end
 
   def set_section
-    @section_id, @section = @inscription.sections.select { |section_id, section| section_id == params[:id] }.first
+    @section_id, @section = @inscription.sections.select { |section_id, _section| section_id == params[:id] }.first
   end
 
   def reload_after_update

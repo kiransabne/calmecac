@@ -23,11 +23,11 @@ class ActivitiesController < ApplicationController
   end
 
   def set_section
-    _, @section = @inscription.sections.select { |section_id, section| section_id == params[:section_id] }.first
+    _, @section = @inscription.sections.select { |section_id, _section| section_id == params[:section_id] }.first
   end
 
   def set_activity
-    @activity_id, @activity = @section["activities"].select { |activity_id, activity| activity_id == params[:id] }.first
+    @activity_id, @activity = @section["activities"].select { |activity_id, _activity| activity_id == params[:id] }.first
   end
 
   def reload_after_update

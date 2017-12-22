@@ -16,6 +16,6 @@ class Inscription < ApplicationRecord
   end
 
   def all_sections_completed?
-    sections.select { |section_id, section| section["completed"] && section["completed"] }.count == sections.count
+    sections.select { |_section_id, section| section["completed"] && section["completed"] }.count == sections.count
   end
 end

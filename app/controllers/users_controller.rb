@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    unless params[:password]&.empty?
-      if current_user.update_attributes(user_params)
+    if params[:password]&.empty?
+      if current_user.update_without_password(user_params)
         redirect_to root_path
       else
         redirect_to edit_user_path
       end
     else
-      if current_user.update_without_password(user_params)
+      if current_user.update_attributes(user_params)
         redirect_to root_path
       else
         redirect_to edit_user_path
