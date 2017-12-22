@@ -1,13 +1,18 @@
-<div>
-  <div>
-    <%= resource["title"] %>
-  </div>
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="module__resource-card">
+      <div>
+        <p class="mono-subtitle__alt">Resource</p>
+        <p class="dark-title"><%= resource["title"] %></p>
+      </div>
 
-  <div>
-    <%= YouTubeAddy.youtube_embed_url(resource["link"], 420, 315).html_safe %>
-  </div>
+      <div>
+        <%= YouTubeAddy.youtube_embed_url(resource["link"], 420, 315).html_safe %>
+      </div>
 
-  <div>
-    <%= link_to "play on youtube", "#{resource['link']}" %>
+      <div>
+        <%= link_to "view resource", "#{resource['link']}", class:'button-outline__min' %>
+      </div>
+    </div>
   </div>
 </div>

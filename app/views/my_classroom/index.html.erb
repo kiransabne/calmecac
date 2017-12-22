@@ -68,14 +68,22 @@
             My completed courses
           </div>
           <div>
-            <% current_user.inscriptions.completed.each do |completed_inscription| %>
-            <div>
-              <div>
-                <%= completed_inscription.course.name %>
+            <% current_user.inscriptions.completed.in_groups_of(3, false) do |group| %>
+            <div class="row">
+              <% group.each do |completed_inscription| %>
+              <div class="col-4">
+                <div class="myclassroom__course">
+                  <div class="align vertical">
+                    <div class="main-subtitle">
+                      <%= completed_inscription.course.name %>
+                    </div>
+                    <div class="mono-subtitle__alt">
+                      <%= completed_inscription.progress.total_sections %> Modules
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <%= completed_inscription.progress.total_sections %> Modules
-              </div>
+              <% end %>
             </div>
             <% end %>
           </div>

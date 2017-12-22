@@ -1,0 +1,45 @@
+.module__header {
+  background: $primary-color;
+  margin-bottom: px-to-rems(25);
+  padding: px-to-rems(50) 0;
+  text-align: center;
+
+  .mono-title {
+    padding-bottom: px-to-rems(25);
+  }
+
+  .main-title {
+    padding-bottom: px-to-rems(25);
+  }
+}
+
+.module__resource-card {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 px-to-rems(17) 0 rgba(205,205,205,0.50);
+  margin: px-to-rems(25) auto;
+  max-width: px-to-rems(500);
+  padding: px-to-rems(20);
+  text-align: center;
+
+  &-link {
+    margin-bottom: px-to-rems(25);
+  }
+
+  &-input {
+    border: none;
+    border-bottom: 1px solid #4A4A4A;
+    font-family: $secondary-font;
+    margin-bottom: px-to-rems(15);
+    padding: px-to-rems(10) px-to-rems(15);
+    width: 90%;
+  }
+
+  .dark-title {
+    padding-bottom: px-to-rems(15);
+  }
+
+  .mono-subtitle__alt {
+    margin-top: px-to-rems(20);
+  }
+}

@@ -16,7 +16,8 @@
   display: inline-block;
 }
 
-.myclassroom__activity-active {
+.myclassroom__activity-active,
+.myclassroom__activity-past {
   padding: px-to-rems(50) 0;
   text-align: center;
 
@@ -27,11 +28,6 @@
   .row {
     margin-bottom: px-to-rems(50);
   }
-}
-
-.myclassroom__activity-past {
-  padding: px-to-rems(30) 0;
-  text-align: center;
 }
 
 .myclassroom__course {
