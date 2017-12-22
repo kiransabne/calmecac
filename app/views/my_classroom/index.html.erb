@@ -36,17 +36,25 @@
             My active courses
           </div>
           <div>
-            <% current_user.inscriptions.in_progress.each do |in_progress_inscription| %>
-              <%= link_to inscription_path in_progress_inscription do %>
-                <div>
-                  <div>
-                    <%= in_progress_inscription.course.name %>
-                  </div>
-                  <div>
-                    <%= in_progress_inscription.progress.completed_sections %> / <%= in_progress_inscription.progress.total_sections %> Modules
+            <% current_user.inscriptions.in_progress.in_groups_of(3, false) do |group| %>
+            <div class="row">
+              <% group.each do |in_progress_inscription| %>
+              <div class="col-4">
+                <div class="myclassroom__course">
+                  <div class="align vertical">
+                    <%= link_to inscription_path in_progress_inscription do %>
+                    <div class="main-subtitle">
+                      <%= in_progress_inscription.course.name %>
+                    </div>
+                    <div class="mono-subtitle__alt">
+                      <%= in_progress_inscription.progress.completed_sections %> / <%= in_progress_inscription.progress.total_sections %> Modules
+                    </div>
+                    <% end %>
                   </div>
                 </div>
+              </div>
               <% end %>
+            </div>
             <% end %>
           </div>
         </div>
@@ -60,15 +68,23 @@
             My completed courses
           </div>
           <div>
-            <% current_user.inscriptions.completed.each do |completed_inscription| %>
-              <div>
-                <div>
-                  <%= completed_inscription.course.name %>
-                </div>
-                <div>
-                  <%= completed_inscription.progress.total_sections %> Modules
+            <% current_user.inscriptions.completed.in_groups_of(3, false) do |group| %>
+            <div class="row">
+              <% group.each do |completed_inscription| %>
+              <div class="col-4">
+                <div class="myclassroom__course">
+                  <div class="align vertical">
+                    <div class="main-subtitle">
+                      <%= completed_inscription.course.name %>
+                    </div>
+                    <div class="mono-subtitle__alt">
+                      <%= completed_inscription.progress.total_sections %> Modules
+                    </div>
+                  </div>
                 </div>
               </div>
+              <% end %>
+            </div>
             <% end %>
           </div>
         </div>

@@ -1,8 +1,11 @@
 @import 'alom/base';
 @import 'navbar';
 @import 'sessions';
+@import 'landing';
 @import 'myclassroom';
 @import 'inscriptions';
+@import 'courses';
+@import 'module';
 @import "growlyflash";
 
 body {
@@ -19,11 +22,36 @@ body {
   font-family: $primary-font;
   font-size: px-to-rems(36);
   font-weight: 700;
+  line-height: px-to-rems(48);
+  margin-bottom: px-to-rems(15);
+}
+
+.main-subtitle {
+  color: $secondary-color;
+  font-family: $primary-font;
+  font-size: px-to-rems(24);
+  font-weight: 700;
   margin-bottom: px-to-rems(15);
 }
 
 .dark-title {
-  color: #000;
+  color: #4A4A4A;
+  font-family: $primary-font;
+  font-size: px-to-rems(36);
+  font-weight: 700;
+  margin-bottom: px-to-rems(15);
+}
+
+.light-title {
+  color: $primary-color;
+  font-family: $primary-font;
+  font-size: px-to-rems(36);
+  font-weight: 700;
+  margin-bottom: px-to-rems(15);
+}
+
+.alternative-title {
+  color: $alternative-color;
   font-family: $primary-font;
   font-size: px-to-rems(36);
   font-weight: 700;
@@ -50,6 +78,32 @@ body {
   font-family: $secondary-font;
   font-size: px-to-rems(16);
   margin-bottom: px-to-rems(10);
+}
+
+.text-std {
+  color: #4A4A4A;
+  font-size: px-to-rems(14);
+  line-height: px-to-rems(22);
+}
+
+.text-std-alt {
+  color: $secondary-color;
+  font-size: px-to-rems(14);
+  line-height: px-to-rems(22);
+}
+
+.button-link {
+  color: $alternative-color;
+  font-family: $secondary-font;
+  font-size: px-to-rems(14);
+  transition: all .3s ease;
+}
+
+.button-link:hover {
+  color: $alternative-color;
+  font-family: $secondary-font;
+  font-size: px-to-rems(14);
+  text-decoration: underline;
 }
 
 .button-std {
@@ -108,14 +162,15 @@ body {
   padding: px-to-rems(10) px-to-rems(50);
 }
 
-.button-outline__min {
+.button-outline__min,
+.button-outline__min-alt {
   background: transparent;
   border-radius: px-to-rems(40);
   border: 0.125rem solid $secondary-color;
   color: $secondary-color;
   font-family: "Roboto Mono", monospace;
-  font-size: px-to-rems(16);
-  letter-spacing: px-to-rems(2);
+  font-size: px-to-rems(14);
+  letter-spacing: px-to-rems(1);
   margin: px-to-rems(15) 0;
   padding: px-to-rems(5) px-to-rems(20);
   text-transform: uppercase;
@@ -129,8 +184,23 @@ body {
   border: 0.125rem solid $secondary-color;
   color: $primary-color;
   font-family: "Roboto Mono", monospace;
-  font-size: px-to-rems(16);
-  letter-spacing: px-to-rems(2);
+  font-size: px-to-rems(14);
+  letter-spacing: px-to-rems(1);
+  margin: px-to-rems(15) 0;
+  padding: px-to-rems(5) px-to-rems(20);
+  text-transform: uppercase;
+  transition: all .3s ease;
+  text-align: center;
+}
+
+.button-outline__min-alt:hover {
+  background: $alternative-color;
+  border-radius: px-to-rems(40);
+  border: 0.125rem solid $alternative-color;
+  color: $primary-color;
+  font-family: "Roboto Mono", monospace;
+  font-size: px-to-rems(14);
+  letter-spacing: px-to-rems(1);
   margin: px-to-rems(15) 0;
   padding: px-to-rems(5) px-to-rems(20);
   text-transform: uppercase;

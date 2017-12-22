@@ -1,33 +1,37 @@
-<div>
-  <%= @inscription.course_name %> Exam
-</div>
+<div class="eow">
+  <div class="col-6 offset-3">
+    <div class="module__resource-card">
+      <div class="alternative-title">
+        <%= @inscription.course_name %> Exam
+      </div>
 
-<div>
-  <div>
-    Module Exam
-  </div>
+      <div>
 
-  <div>
-    <%= exam["description"] %>
-  </div>
-
-  <div>
-    <%= form_for :exam, url: "/inscriptions/#{inscription.id}/sections/#{section_id}", method: :put do |f| %>
-      <% exam["questions"].each do |question_id, question| %>
-        <div>
-          <%= question["content"] %>
+        <div class="text-std">
+          <%= exam["description"] %>
         </div>
+
         <div>
-          <%= f.fields_for :questions do |q| %>
-            <%= q.text_field question_id %>
+          <%= form_for :exam, url: "/inscriptions/#{inscription.id}/sections/#{section_id}", method: :put do |f| %>
+            <% exam["questions"].each do |question_id, question| %>
+              <div class="text-std">
+                <%= question["content"] %>
+              </div>
+              <div>
+                <%= f.fields_for :questions do |q| %>
+                  <%= q.text_field question_id, class:"module__resource-card-input" %>
+                <% end %>
+              </div>
+
+              <div>
+              </div>
+            <% end %>
+
+            <%= f.submit 'Finish exam', class:'button-alt' %>
           <% end %>
         </div>
+      </div>
 
-        <div>
-        </div>
-      <% end %>
-
-      <%= f.submit 'Finish exam' %>
-    <% end %>
+    </div>
   </div>
 </div>

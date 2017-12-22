@@ -1,46 +1,48 @@
-<div>
-  course: <%= @inscription.course_name %>
-</div>
+<div class="module__header">
+  <div class="mono-title">
+    <b>Course:</b> <%= @inscription.course_name %>
+  </div>
 
-<div>
-  <%= @section["title"] %>
-</div>
-
-<div>
-  <div>
-    Resources
+  <div class="main-title">
+    <%= @section["title"] %>
   </div>
 
   <div>
-    <ul>
-      <% @section["resources"].each do |resource| %>
-        <%= resource["title"] %>
-      <% end %>
-    </ul>
-  </div>
-</div>
+    <div class="mono-subtitle__alt">
+      Resources
+    </div>
 
-<div>
-  <div>
-    Activities
-  </div>
-
-  <div>
-    <ul>
-      <% @section["activities"].each do |activity_id, activity| %>
-        <%= activity["title"] %>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div>
-  <div>
-    Exam
+    <div class="inscription-text">
+      <ul>
+        <% @section["resources"].each do |resource| %>
+          <li><%= resource["title"] %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <div>
-    <%= @section["title"] %> Exam
+    <div class="mono-subtitle__alt">
+      Activities
+    </div>
+
+    <div class="inscription-text">
+      <ul>
+        <% @section["activities"].each do |activity_id, activity| %>
+          <li><%= activity["title"] %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <div class="mono-subtitle__alt">
+      Exam
+    </div>
+
+    <div class="inscription-text">
+      <%= @section["title"] %> Exam
+    </div>
   </div>
 </div>
 

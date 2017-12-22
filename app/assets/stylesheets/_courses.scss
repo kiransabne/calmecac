@@ -1,0 +1,18 @@
+.courses-index {
+  padding: px-to-rems(50) 0;
+
+  &__title {
+    padding-bottom: px-to-rems(50);
+    text-align: center;
+  }
+}
+
+.course-card {
+  background: $primary-color;
+  border-radius: px-to-rems(5);
+  height: px-to-rems(350);
+  margin: 0 auto;
+  padding: px-to-rems(10) 0;
+  text-align: center;
+  width: 90%;
+}
