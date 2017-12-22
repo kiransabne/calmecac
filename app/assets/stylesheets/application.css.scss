@@ -3,6 +3,7 @@
 @import 'sessions';
 @import 'myclassroom';
 @import 'inscriptions';
+@import 'courses';
 
 body {
   font-family: $secondary-font;
@@ -17,6 +18,14 @@ body {
   color: $secondary-color;
   font-family: $primary-font;
   font-size: px-to-rems(36);
+  font-weight: 700;
+  margin-bottom: px-to-rems(15);
+}
+
+.main-subtitle {
+  color: $secondary-color;
+  font-family: $primary-font;
+  font-size: px-to-rems(24);
   font-weight: 700;
   margin-bottom: px-to-rems(15);
 }
