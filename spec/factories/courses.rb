@@ -3,5 +3,6 @@ FactoryBot.define do
     name "MyString"
     description "MyText"
     objectives "MyText"
+    user
   end
 end

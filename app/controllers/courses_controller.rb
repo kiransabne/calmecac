@@ -72,6 +72,8 @@ class CoursesController < ApplicationController
   def update
     authorize @course
 
+    puts course_params
+
     if @course.update(course_params)
       redirect_to @course, notice: "Course was successfully updated."
     else

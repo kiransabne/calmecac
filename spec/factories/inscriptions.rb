@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :inscription do
-    course ""
     assigned false
-    status "MyText"
+    status "in_progress"
+    course
+    user
   end
 end
