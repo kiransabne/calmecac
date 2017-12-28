@@ -1,39 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
+<div class="courses-index">
+  <h1 class="courses-index__title main-title">My Courses</h1>
 
-<% @courses.each do |course| %>
-  <div>
-    <div>
-      <%= course.name %>
-    </div>
-
-    <div>
-      <%= course.description %>
-    </div>
-
-    <div>
-      <% course.objectives.each do |objective| %>
+  <% @courses.in_groups_of(3, false) do |group| %>
+  <div class="row">
+  <% group.each do |course| %>
+  <div class="col-4">
+    <div class="course-card">
+      <div class="align vertical">
         <div>
-          <%= objective %>
+          <div class="main-subtitle">
+            <%= course.name %>
+          </div>
+
+          <div class="inscription-text">
+            <%= course.description %>
+          </div>
+
+          <div class="inscription-text">
+            <% course.objectives.each do |objective| %>
+              <div>
+                - <%= objective %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      <% end %>
+
+        <div>
+          <%= link_to 'Edit', edit_course_path(course) if policy(course).edit? %>
+        </div>
+
+        <% if policy(course).inscribe? %>
+          <div>
+            <%= link_to 'Inscribe', inscribe_course_path(course), method: :post, class:'button-alt' %>
+          </div>
+        <% else %>
+          <% if current_user.inscribed? course %>
+            <div class="">
+              <%= link_to 'Inscribed', inscription_path(current_user.inscription_for(course)), class:'button-alt' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <div>
-    <%= link_to 'Edit', edit_course_path(course) if policy(course).edit? %>
-  </div>
-
-  <% if policy(course).inscribe? %>
-    <div>
-      <%= link_to 'Inscribe', inscribe_course_path(course), method: :post %>
-    </div>
-  <% else %>
-    <% if current_user.inscribed? course %>
-      <%= link_to 'Inscribed', inscription_path(current_user.inscription_for(course)) %>
-    <% end %>
   <% end %>
-<% end %>
+  </div>
+  <% end %>
+</div>
 
 <%= link_to 'New Course', new_course_path if policy(Course).new? %>
