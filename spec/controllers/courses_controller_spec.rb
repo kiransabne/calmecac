@@ -63,40 +63,154 @@ RSpec.describe CoursesController, type: :controller do
   describe "POST #create" do
     context "with valid attributes" do
       it "creates a new course" do
-        print attributes_for(:course)
+        course = create(:course)
         expect {
-          post :create, params: {course: {:name => "Test name", :description => "Test description", :objectives => "test objectives", :user_id => 2}}
+          post :create, params: {
+            "course": {
+              "user_id": "2",
+              "name": "Test Course",
+              "description": "Test Description",
+              "objectives": "test goal, test goal 1",
+              "sections": {
+                "30f725ee-db90-4ba1-bdf1-27cbb5568c7c": {
+                  "name": "Test Module",
+                  "resources": {
+                    "c6c3b68f-18e7-414f-b30c-e4ca23433946": {
+                      "link": "http://resource2"
+                    },
+                    "09013a6d-cf4b-48e5-bd13-cd26551095dd": {
+                      "link": "http://resource1"
+                    }
+                  },
+                  "activities": {
+                    "79280be6-cc75-4340-8707-3b77f616510b": {
+                      "description": "answer questions",
+                      "url": "http://activity2",
+                      "questions": {
+                        "7fe750f1-dfbe-4cc5-8172-4417c78d15b3": "did you 3?"
+                      }
+                    }
+                  },
+                  "exam": {
+                    "db17dc0f-e2bf-464b-9510-d2aec129785f": {
+                      "description": "exam!",
+                      "questions": {
+                        "37ecb12e-eed6-4497-869d-c71334e76a24": "did you 2 ?",
+                        "302ae3ef-6a1c-4fbb-b5ac-a4674a002c4c": "did you?"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }.to change(Course, :count).by(1)
       end
-
       it "redirects to the created activity" do
-        post :create, params: {course: {:name => "Test name", :description => "Test description", :objectives => "test objectives", :user_id => 2}}
-        expect(response).to redirect_to(Course.last)
+        post :create, params: {
+          "course": {
+            "user_id": "2",
+            "name": "Test Course",
+            "description": "Test Description",
+            "objectives": "test goal, test goal 1",
+            "sections": {
+              "30f725ee-db90-4ba1-bdf1-27cbb5568c7c": {
+                "name": "Test Module",
+                "resources": {
+                  "c6c3b68f-18e7-414f-b30c-e4ca23433946": {
+                    "link": "http://resource2"
+                  },
+                  "09013a6d-cf4b-48e5-bd13-cd26551095dd": {
+                    "link": "http://resource1"
+                  }
+                },
+                "activities": {
+                  "79280be6-cc75-4340-8707-3b77f616510b": {
+                    "description": "answer questions",
+                    "url": "http://activity2",
+                    "questions": {
+                      "7fe750f1-dfbe-4cc5-8172-4417c78d15b3": "did you 3?"
+                    }
+                  }
+                },
+                "exam": {
+                  "db17dc0f-e2bf-464b-9510-d2aec129785f": {
+                    "description": "exam!",
+                    "questions": {
+                      "37ecb12e-eed6-4497-869d-c71334e76a24": "did you 2 ?",
+                      "302ae3ef-6a1c-4fbb-b5ac-a4674a002c4c": "did you?"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        expect(response).to redirect_to(my_courses_path)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {course: {}}
+        post :create, params: {
+          "course": {
+            "name": 23423443,
+            "description": "Test Description",
+            "objectives": "test goal, test goal 1",
+            "sections": {
+              "30f725ee-db90-4ba1-bdf1-27cbb5568c7c": {
+                "name": "Test Module",
+                "resources": {
+                  "c6c3b68f-18e7-414f-b30c-e4ca23433946": {
+                    "link": 2344533
+                  },
+                  "09013a6d-cf4b-48e5-bd13-cd26551095dd": {
+                    "link": 234452435
+                  }
+                },
+                "activities": {
+                  "79280be6-cc75-4340-8707-3b77f616510b": {
+                    "description": "answer questions",
+                    "url": 245234555,
+                    "questions": {
+                      "7fe750f1-dfbe-4cc5-8172-4417c78d15b3": 7968969
+                    }
+                  }
+                },
+                "exam": {
+                  "db17dc0f-e2bf-464b-9510-d2aec129785f": {
+                    "description": "exam!",
+                    "questions": {
+                      "37ecb12e-eed6-4497-869d-c71334e76a24": "did you 2 ?",
+                      "302ae3ef-6a1c-4fbb-b5ac-a4674a002c4c": "did you?"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
         expect(response).to be_success
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      it "updates the requested course" do
-        course = create(:course)
-        put :update, params: {course: {:name => "New name", :description => "New description", :objectives => "New objectives"}}
-        course.reload
-      end
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     it "updates the requested course" do
+  #       course = create(:course)
+  #       # put :update, id: @activity, activity: attributes_for(:activity, name: "my new name")
+  #       put :update, params: {}
+  #       course.reload
+  #     end
 
       # it "redirects to the course" do
       #   course = Course.create! valid_attributes
       #   put :update, params: {id: course.to_param, course: valid_attributes}, session: valid_session
       #   expect(response).to redirect_to(course)
       # end
-    end
+    # end
 
     # context "with invalid params" do
     #   it "returns a success response (i.e. to display the 'edit' template)" do
@@ -105,21 +219,6 @@ RSpec.describe CoursesController, type: :controller do
     #     expect(response).to be_success
     #   end
     # end
-  end
-  #
-  # describe "DELETE #destroy" do
-  #   it "destroys the requested course" do
-  #     course = Course.create! valid_attributes
-  #     expect {
-  #       delete :destroy, params: {id: course.to_param}, session: valid_session
-  #     }.to change(Course, :count).by(-1)
-  #   end
-  #
-  #   it "redirects to the courses list" do
-  #     course = Course.create! valid_attributes
-  #     delete :destroy, params: {id: course.to_param}, session: valid_session
-  #     expect(response).to redirect_to(courses_url)
-  #   end
   # end
 
 end

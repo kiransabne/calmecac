@@ -63,7 +63,7 @@ class CoursesController < ApplicationController
     @course = Course.new(data)
 
     if @course.save
-      redirect_to @my_courses, notice: "Course was successfully created."
+      redirect_to my_courses_path, notice: "Course was successfully created."
     else
       render :new
     end
@@ -71,8 +71,6 @@ class CoursesController < ApplicationController
 
   def update
     authorize @course
-
-    puts course_params
 
     if @course.update(course_params)
       redirect_to @course, notice: "Course was successfully updated."

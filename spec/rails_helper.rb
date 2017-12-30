@@ -30,3 +30,9 @@ def sign_in_teacher
   user.add_role(:teacher)
   sign_in user
 end
+
+def sign_in_student
+  user = create(:user)
+  user.add_role(:student)
+  sign_in user
+end
