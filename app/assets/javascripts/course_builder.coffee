@@ -58,27 +58,27 @@ class CourseBuilder
 
   _newSection: () =>
     uuid = @_uuid()
-    return "<div id='module-" + uuid + "'><label>Name</label><input name='course[sections][" + uuid + "][name]' id='course_sections_" + uuid + "_name'><div class='resources'><a href='#' id='add-resource' data-id='" + uuid + "'>Add Resource</a></div><div class='activities'><a href='#' id='add-activity' data-id='" + uuid + "'>Add Activity</a></div><div class='exam'><a href='#' id='add-exam' data-id='" + uuid + "'>Add Exam</a></div></div>"
+    return "<div id='module-" + uuid + "'><label class='registration-container__label'>Module name</label><br><input class='registration-container__input' name='course[sections][" + uuid + "][name]' id='course_sections_" + uuid + "_name' placeholder='Module name'><div class='resources'><a class='button-link' href='#' id='add-resource' data-id='" + uuid + "'>Add Resource</a></div><div class='activities'><a class='button-link' href='#' id='add-activity' data-id='" + uuid + "'>Add Activity</a></div><div class='exam'><a class='button-link' href='#' id='add-exam' data-id='" + uuid + "'>Add Exam</a></div></div>"
 
   _newResource: (currentModule) =>
     uuid = @_uuid()
-    return "<div id='resource-" + uuid + "'><input name='course[sections][" + currentModule + "][resources][" + uuid + "][name]' id='course_sections_" + currentModule + "_resources_" + uuid + "_name'/><input name='course[sections][" + currentModule + "][resources][" + uuid + "][link]' id='course_sections_" + currentModule + "_resources_" + uuid + "_link'/></div>"
+    return "<div id='resource-" + uuid + "'><input class='registration-container__input' name='course[sections][" + currentModule + "][resources][" + uuid + "][name]' id='course_sections_" + currentModule + "_resources_" + uuid + "_name'/ placeholder='Resource name'><input class='registration-container__input' name='course[sections][" + currentModule + "][resources][" + uuid + "][link]' id='course_sections_" + currentModule + "_resources_" + uuid + "_link'/ placeholder='Resource link'></div>"
 
   _newActivity: (currentModule) =>
     uuid = @_uuid()
-    return "<div id='activity-" + uuid + "'><input name='course[sections]" + currentModule + "][activities][" + uuid + "][name]' id='course_sections_" + currentModule + "_activities_" + uuid + "_name'/><input name='course[sections]" + currentModule + "][activities][" + uuid + "][description]' id='course_sections_" + currentModule + "_activities_" + uuid + "_description'/><input name='course[sections][" + currentModule + "][activities][" + uuid + "][url]' id='course_sections_" + currentModule + "_activities_" + uuid + "_url'/><div class='questions'><a href='#' id='add-question-to-activity' data-id='" + currentModule + "' data-activity-id='" + uuid + "'>Add Question</a></div></div>"
+    return "<div id='activity-" + uuid + "'><input class='registration-container__input' name='course[sections]" + currentModule + "][activities][" + uuid + "][name]' id='course_sections_" + currentModule + "_activities_" + uuid + "_name'/ placeholder='Activity name'><input class='registration-container__input' name='course[sections]" + currentModule + "][activities][" + uuid + "][description]' id='course_sections_" + currentModule + "_activities_" + uuid + "_description' placeholder='Activity resource'/><input class='registration-container__input' name='course[sections][" + currentModule + "][activities][" + uuid + "][url]' id='course_sections_" + currentModule + "_activities_" + uuid + "_url' placeholder='Activity link'/><div class='questions'><a class='button-link' href='#' id='add-question-to-activity' data-id='" + currentModule + "' data-activity-id='" + uuid + "'>Add Question</a></div></div>"
 
   _newQuestionForActivity: (currentModule, currentActivity) =>
     uuid = @_uuid()
-    return "<div id='question-'" + uuid + "'><input name='course[sections][" + currentModule + "][activities][" + currentActivity + "]questions[" + uuid + "]' id='course_sections_" + currentModule + "_activities_" + currentActivity + "_questions_" + uuid + "'/></div>"
+    return "<div id='question-'" + uuid + "'><input class='registration-container__input' name='course[sections][" + currentModule + "][activities][" + currentActivity + "]questions[" + uuid + "]' id='course_sections_" + currentModule + "_activities_" + currentActivity + "_questions_" + uuid + "' placeholder='Activity question'/></div>"
 
   _newQuestionForExam: (currentModule, currentExam) =>
     uuid = @_uuid()
-    return "<div id='question-'" + uuid + "'><input name='course[sections][" + currentModule + "][exam][" + currentExam + "]questions[" + uuid + "]' id='course_sections_" + currentModule + "_exam_" + currentExam + "_questions_" + uuid + "'/></div>"
+    return "<div id='question-'" + uuid + "'><input class='registration-container__input' name='course[sections][" + currentModule + "][exam][" + currentExam + "]questions[" + uuid + "]' id='course_sections_" + currentModule + "_exam_" + currentExam + "_questions_" + uuid + "' placeholder='Exam question'/></div>"
 
   _newExam: (currentModule) =>
     uuid = @_uuid()
-    return "<div id='exam-" + uuid + "'><input name='course[sections]" + currentModule + "][exam][" + uuid + "][description]' id='course_sections_" + currentModule + "_exam_" + uuid + "_description'/><div class='questions'><a href='#' id='add-question-to-exam' data-id='" + currentModule + "' data-exam-id='" + uuid + "'>Add Question</a></div></div>"
+    return "<div id='exam-" + uuid + "'><input class='registration-container__input' name='course[sections]" + currentModule + "][exam][" + uuid + "][description]' id='course_sections_" + currentModule + "_exam_" + uuid + "_description' placeholder='Exam description'/><div class='questions'><a href='#' id='add-question-to-exam' data-id='" + currentModule + "' data-exam-id='" + uuid + "'>Add Exam question</a></div></div>"
 
   _uuid: () ->
     d = (new Date).getTime()

@@ -13,26 +13,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, id: :course_name %>
+    <%= f.label :name, class: 'registration-container__label' %><br />
+    <%= f.text_field :name, id: :course_name, placeholder: "Course Name", class: 'registration-container__input' %>
   </div>
 
   <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, id: :course_description %>
+    <%= f.label :description, class: 'registration-container__label' %><br />
+    <%= f.text_area :description, id: :course_description, placeholder: "Description", class: 'registration-container__input' %>
   </div>
 
   <div class="field">
-    <%= f.label :objectives %>
-    <%= f.text_area :objectives, id: :course_objectives %>
+    <%= f.label :objectives, class: 'registration-container__label' %><br />
+    <%= f.text_area :objectives, id: :course_objectives, placeholder: "Objectives", class: 'registration-container__input' %>
   </div>
 
   <div id="modules">
-    <%= link_to "Add Module", "#", id: "add-module" %>
+    <%= link_to "Add Module +", "#", id: "add-module", class:'button-outline__min' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:'button-alt' %>
   </div>
 <% end %>
 
@@ -42,4 +42,3 @@
    courseBuilder.init()
  });
 </script>
-

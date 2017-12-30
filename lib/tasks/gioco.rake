@@ -1,10 +1,11 @@
 # -*- encoding: utf-8 -*-
-
 namespace :gioco do
+
   desc "Used to add a new badge at Gioco scheme"
 
-  task :add_badge, %i[name points kind default] => :environment do |_t, args|
-    arg_default = args.default ? eval(args.default) : false
+  task :add_badge, [:name, :points, :kind, :default] => :environment do |t, args|
+    arg_default = ( args.default ) ? eval(args.default) : false
+
 
     if !args.name || !args.points || !args.kind
       raise "There are missing some arguments"
@@ -26,7 +27,8 @@ namespace :gioco do
 "
 
       if arg_default
-        badge_string = badge_string + "resources = User.all\n"
+        badge_string = badge_string + 'resources = User.all
+'
         badge_string = badge_string + "resources.each do |r|
         r.points  << Point.create({ :kind_id => kind.id, :value => '#{args.points}'})
           r.badges << badge
@@ -40,18 +42,17 @@ namespace :gioco do
       eval badge_string
 
       file_path = "/db/gioco/create_badge_#{args.name}_#{args.kind}.rb"
-      File.open("#{Rails.root}#{file_path}", "w") { |f| f.write badge_string }
-      File.open("#{Rails.root}/db/gioco/db.rb", "a") do |f|
-        f.write "require \"\#\{Rails.root\}#{file_path}\"
-"
-      end
+      File.open("#{Rails.root}#{file_path}", 'w') { |f| f.write badge_string }
+      File.open("#{Rails.root}/db/gioco/db.rb", 'a') { |f| f.write "require \"\#\{Rails.root\}#{file_path}\"
+" }
 
     end
+
   end
 
   desc "Used to remove an old badge at Gioco scheme"
 
-  task :remove_badge, %i[name kind] => :environment do |_t, args|
+  task :remove_badge, [:name, :kind] => :environment do |t, args|
     if !args.name || !args.kind
       raise "There are missing some arguments"
     else
@@ -66,15 +67,13 @@ namespace :gioco do
     eval badge_string
 
     file_path = "/db/gioco/remove_badge_#{args.name}.rb"
-    File.open("#{Rails.root}#{file_path}", "w") { |f| f.write badge_string }
-    File.open("#{Rails.root}/db/gioco/db.rb", "a") do |f|
-      f.write "require \"\#\{Rails.root\}#{file_path}\"
-"
-    end
+    File.open("#{Rails.root}#{file_path}", 'w') { |f| f.write badge_string }
+    File.open("#{Rails.root}/db/gioco/db.rb", 'a') { |f| f.write "require \"\#\{Rails.root\}#{file_path}\"
+" }
   end
 
   desc "Removes a given kind"
-  task :remove_kind, [:name] => :environment do |_t, args|
+  task :remove_kind, [:name] => :environment do |t, args|
     if !args.name
       raise "There are missing some arguments"
     else
@@ -92,8 +91,8 @@ namespace :gioco do
     File.open("#{Rails.root}#{file_path}", "w") { |f| f.write kind_string }
     File.open("#{Rails.root}/db/gioco/db.rb", "a") { |f| f.write "require \"\#\{Rails.root\}#{file_path}\"\n" }
   end
-
-  task sync_database: :environment do
+  
+  task :sync_database => :environment do
     content = File.read("/usr/src/app/db/gioco/db.rb")
     eval content
   end
