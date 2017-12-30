@@ -8,6 +8,7 @@
 @import 'module';
 @import 'new-course';
 @import "growlyflash";
+@import "flash";
 
 body {
   font-family: $secondary-font;
@@ -17,6 +18,21 @@ body {
   margin: 0 auto;
   width: 90%;
 }
+
+.badge {
+  align-items: center;
+  display: flex;
+
+  .image img {
+    height: px-to-rems(50);
+  }
+
+  .title {
+    color: $alternative-color;
+    margin: 0 0 0 px-to-rems(16);
+  }
+}
+
 
 .main-title {
   color: $secondary-color;
@@ -207,4 +223,8 @@ body {
   text-transform: uppercase;
   transition: all .3s ease;
   text-align: center;
+}
+
+#notice{
+  display: none;
 }
