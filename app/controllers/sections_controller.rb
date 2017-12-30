@@ -9,7 +9,10 @@ class SectionsController < ApplicationController
   def update
     authorize @inscription, :exam?
 
-    SectionManager::Exam.update @inscription, @section, params
+    if SectionManager::Exam.update @inscription, @section, params
+      current_user.change_points(points: 1, kind: Kind.first.id)
+    end
+
     redirect_to my_classroom_path
   end
 

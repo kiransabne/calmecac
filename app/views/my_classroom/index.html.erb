@@ -16,8 +16,13 @@
             <div class="main-title">
               <%= current_user.name %>
             </div>
-            <div>
-              <%= current_user.rewards.last %>
+            <div class="badge">
+              <div class="image">
+                <%= badge_image_for current_user %>
+              </div>
+              <div class="title">
+                <%= badge_title_for current_user %>
+              </div>
             </div>
             <div class="mono-subtitle">
               <%= current_user.inscriptions.completed.count %> Courses completed
