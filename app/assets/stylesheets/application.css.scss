@@ -33,6 +33,11 @@ body {
   }
 }
 
+#error_explanation {
+  color: $alternative-color;
+  font-size: px-to-rems(14);
+  padding: px-to-rems(25);
+}
 
 .main-title {
   color: $secondary-color;
