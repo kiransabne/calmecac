@@ -146,3 +146,7 @@ $displays: 'block', 'flex', 'inline', 'inline-block', 'inline-flex', 'table', 'n
     border: 1px solid $test-border !important;
   }
 }
+
+.flex-column {
+  flex-direction: column;
+}

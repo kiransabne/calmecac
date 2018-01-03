@@ -39,3 +39,45 @@
   text-align: center;
   width: 90%;
 }
+
+.badge {
+  align-items: center;
+  display: flex;
+
+  .image img {
+    height: px-to-rems(50);
+  }
+
+  .title {
+    color: $alternative-color;
+    margin: 0 0 0 px-to-rems(16);
+  }
+
+  .bar {
+    background-color: #4A4A4A;
+    border-radius: px-to-rems(10);
+    height: px-to-rems(10);
+    overflow: hidden;
+    width: px-to-rems(215);
+
+    .progress {
+      height: 100%;
+      border-radius: px-to-rems(10);
+      background-color: $alternative-color;
+    }
+  }
+
+  .points {
+    align-self: flex-start;;
+    font-weight: bold;
+    margin: 0.625rem 0 0.625rem 0;
+  }
+}
+
+.completed-courses {
+  color: $alternative-color;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.625rem 0 0.625rem 0;
+}
