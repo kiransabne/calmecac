@@ -63,7 +63,7 @@ class CoursesController < ApplicationController
     @course = Course.new(data)
 
     if @course.save
-      redirect_to @my_courses, notice: "Course was successfully created."
+      redirect_to my_courses_path, notice: "Course was successfully created."
     else
       render :new
     end
