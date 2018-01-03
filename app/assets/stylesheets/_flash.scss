@@ -1,16 +1,17 @@
 .growlyflash {
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(114, 201, 187, 0.2);
   border-radius: px-to-rems(6);
-  box-shadow: 0 px-to-rems(1) px-to-rems(10) 0 rgba(0, 0, 0, 0.16), 0 px-to-rems(1) px-to-rems(5) 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 px-to-rems(1) px-to-rems(10) 0 rgba(0, 0, 0, 0.16), 0 px-to-rems(1) px-to-rems(5) 0 rgba(114, 201, 187, 0.12);
   background-color: $primary-color;
   background-image: url("/assets/logo-full.svg");
   background-repeat: no-repeat;
   background-size: px-to-rems(40);
   background-position: px-to-rems(10);
-  padding: px-to-rems(16) px-to-rems(16) px-to-rems(16) px-to-rems(64);
+  padding: px-to-rems(32) px-to-rems(32) px-to-rems(32) px-to-rems(64);
   width: px-to-rems(352);
 
   button {
+    display: none;
     border: 0;
     background-color: transparent;
     font-size: 2rem;
