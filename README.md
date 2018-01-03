@@ -1,4 +1,6 @@
-# EPICK
+<p align="center">
+  <img src="symbol-logo.svg" /> 
+</p>
 
 ![Made with Love by Icalia Labs](https://img.shields.io/badge/With%20love%20by-Icalia%20Labs-ff3434.svg)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
@@ -29,8 +31,8 @@ It is an online learning platform that allows users to create content, manage pr
 
 ### Environment URLS
 
-* **Production** - [http://epick.icalialabs.com](http://epick.icalialabs.com)
-* **Staging** - [https://epick-staging.herokuapp.com](https://epick-staging.herokuapp.com)
+* **Production** - [https://www.calmecac.icalialabs.com](https://www.calmecac.icalialabs.com)
+* **Staging** - [https://sandbox.calmecac.icalialabs.com](https://sandbox.calmecac.icalialabs.com)
 
 ### Da team 
 
@@ -45,7 +47,7 @@ It is an online learning platform that allows users to create content, manage pr
 
 You should ask for access to this tools if you don't have it already:
 
-* [Github repo](https://github.com/IcaliaLabs/epick)
+* [Github repo](https://github.com/IcaliaLabs/calmecac)
 * [Heroku Staging](https://dashboard.heroku.com/apps/epick-staging)
 * [Heroku Production](https://dashboard.heroku.com/apps/epick-production)
 
@@ -63,7 +65,7 @@ After installing please you can follow this simple steps:
 1. Clone this repository into your local machine
 
 ```bash
-$ git clone git@github.com:IcaliaLabs/epick.git
+$ git clone git@github.com:IcaliaLabs/calmecac.git
 ```
 
 2. Fire up a terminal and run:
@@ -86,13 +88,13 @@ $ rake db:migrate
 $ plis run web bash
 ```
 
-2. Run Epick:
+2. Run Calmecac:
 
 ```
 $ plis start
 ```
 
-That command will lift every service Epick needs, such as the `rails server`.
+That command will lift every service Calmecac needs, such as the `rails server`.
 
 It may take a while before you see anything, you can follow the logs of the containers with:
 
@@ -118,7 +120,7 @@ This means the project is up and running.
 
 ### Stop the project
 
-In order to stop EPICK as a whole you can run:
+In order to stop Calmecac as a whole you can run:
 
 ```
 % plis stop
@@ -134,7 +136,7 @@ This will stop every container, but if you need to stop one in particular, you c
 
 ### Restoring the database
 
-You probably won't be working with a blank database, so once you are able to run EPICK you can restore the database, to do it, first stop all services:
+You probably won't be working with a blank database, so once you are able to run Calmecac you can restore the database, to do it, first stop all services:
 
 ```
 % plis stop
@@ -149,15 +151,15 @@ Then just lift up the `db` service:
 The next step is to login to the database container:
 
 ```
-% docker exec -ti epick_db_1 bash
+% docker exec -ti calmecac_db_1 bash
 ```
 
 This will open up a bash session in to the database container.
 
-Up to this point we just need to download a database dump and copy under `epick/backups/`, this directory is mounted on the container, so you will be able to restore it with:
+Up to this point we just need to download a database dump and copy under `calmecac/backups/`, this directory is mounted on the container, so you will be able to restore it with:
 
 ```
-$ /bin/restoredb epick_dev db/backups/<databaseDump>
+$ /bin/restoredb calmecac_dev db/backups/<databaseDump>
 ```
 
 If you want to see how this script works, you can find it under `bin/restoredb`
