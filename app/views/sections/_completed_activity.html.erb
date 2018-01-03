@@ -1,35 +1,33 @@
-<div class="row">
-  <div class="col-6 offset-3">
-    <div class="module__resource-card">
+<div class="col-6 offset-3">
+  <div class="module__resource-card">
+    <div>
       <div>
-        <div>
-          <p class="mono-subtitle__alt">Activity</p>
-          <p class="dark-title"><%= activity["title"] %></p>
+        <p class="mono-subtitle__alt">Activity</p>
+        <p class="dark-title"><%= activity["title"] %></p>
+      </div>
+
+      <div class="text-std">
+        <%= activity["description"] %>
+      </div>
+
+      <div>
+        <div class="module__resource-card-link">
+          <%= link_to activity["url"], class:'button-link' do %>
+            <%= activity["url"] %>
+          <% end %>
         </div>
 
-        <div class="text-std">
-          <%= activity["description"] %>
-        </div>
-
         <div>
-          <div class="module__resource-card-link">
-            <%= link_to activity["url"], class:'button-link' do %>
-              <%= activity["url"] %>
-            <% end %>
-          </div>
-
-          <div>
-            <% activity["questions"].each do |question_id, question| %>
-              <div class="text-std">
-                <%= question["content"] %>
-              </div>
-              <div class="text-std-alt">
-                <%= question["answer"] %>
-              </div>
-            <% end %>
-            <div class="mono-subtitle__alt">
-              Completed!
+          <% activity["questions"].each do |question_id, question| %>
+            <div class="text-std">
+              <%= question["content"] %>
             </div>
+            <div class="text-std-alt">
+              <%= question["answer"] %>
+            </div>
+          <% end %>
+          <div class="mono-subtitle__alt">
+            Completed!
           </div>
         </div>
       </div>

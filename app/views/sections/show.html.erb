@@ -51,11 +51,13 @@
 <% end %>
 
 <% @section["activities"].each do |activity_id, activity| %>
-  <% if activity["completed"] %>
-    <%= render 'completed_activity', activity: activity %>
-  <% else %>
-    <%= render 'activity', activity: activity, activity_id: activity_id, inscription: @inscription, section_id: @section_id %>
-  <% end %>
+  <div class="row" id="activity-<%= activity_id %>">
+    <% if activity["completed"] %>
+      <%= render 'completed_activity', activity: activity %>
+    <% else %>
+      <%= render 'activity', activity: activity, activity_id: activity_id, inscription: @inscription, section_id: @section_id %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= render 'exam', exam: @section["exam"], inscription: @inscription, section_id: @section_id %>
