@@ -1,41 +1,39 @@
-<div class="row">
-  <div class="col-6 offset-3">
-    <div class="module__resource-card">
-      <div id="activity-<%= activity_id %>">
-        <div>
-          <p class="mono-subtitle__alt">Activity</p>
-          <p class="dark-title"><%= activity["title"] %></p>
+<div class="col-6 offset-3">
+  <div class="module__resource-card">
+    <div>
+      <div>
+        <p class="mono-subtitle__alt">Activity</p>
+        <p class="dark-title"><%= activity["title"] %></p>
+      </div>
+
+      <div class="text-std">
+        <%= activity["description"] %>
+      </div>
+
+      <div>
+        <div class="module__resource-card-link">
+          <%= link_to activity["url"], class:'button-link' do %>
+            <%= activity["url"] %>
+          <% end %>
         </div>
 
-        <div class="text-std">
-          <%= activity["description"] %>
-        </div>
-
         <div>
-          <div class="module__resource-card-link">
-            <%= link_to activity["url"], class:'button-link' do %>
-              <%= activity["url"] %>
-            <% end %>
-          </div>
-
-          <div>
-            <%= form_for :activity, url: "/inscriptions/#{inscription.id}/sections/#{section_id}/activities/#{activity_id}", method: :put, remote: true do |f| %>
-              <% activity["questions"].each do |question_id, question| %>
-                <div>
-                  <div class="text-std">
-                    <%= question["content"] %>
-                  </div>
-                  <%= f.fields_for :questions do |q| %>
-                    <%= q.text_field question_id, class:"module__resource-card-input" %>
-                  <% end %>
-                </div>
-              <% end %>
-
+          <%= form_for :activity, url: "/inscriptions/#{inscription.id}/sections/#{section_id}/activities/#{activity_id}", method: :put, remote: true do |f| %>
+            <% activity["questions"].each do |question_id, question| %>
               <div>
-                <%= f.submit 'Finish activity', class:'button-outline__min-alt' %>
+                <div class="text-std">
+                  <%= question["content"] %>
+                </div>
+                <%= f.fields_for :questions do |q| %>
+                  <%= q.text_field question_id, class:"module__resource-card-input" %>
+                <% end %>
               </div>
             <% end %>
-          </div>
+
+            <div>
+              <%= f.submit 'Finish activity', class:'button-outline__min-alt' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
