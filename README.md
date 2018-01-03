@@ -134,6 +134,21 @@ This will stop every container, but if you need to stop one in particular, you c
 
 `web` is the service name located on the `docker-compose.yml` file, there you can see the services name and stop each of them if you need to.
 
+### Setup Badges
+Calmecac has a very simple gamification process based on points and kinds.
+To setup the basics run as follows:
+
+```bash 
+$ rails gioco:add_badge[noob,0,student,true]
+$ rails gioco:add_badge[the_playground,1,student]
+$ rails gioco:add_badge[the_spark,10,student]
+$ rails gioco:add_badge[the_know_it_all,30,student]
+$ rails gioco:add_badge[the_ai,100,student]
+```
+
+The badges names are based on image badges that Calmecac has default. For more information about the gamification system
+please visit [link](https://github.com/thelastinuit/gioco/tree/1.1.1).
+
 ### Restoring the database
 
 You probably won't be working with a blank database, so once you are able to run Calmecac you can restore the database, to do it, first stop all services:
