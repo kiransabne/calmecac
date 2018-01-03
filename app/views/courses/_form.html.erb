@@ -24,10 +24,55 @@
 
   <div class="field">
     <%= f.label :objectives, class: 'registration-container__label' %><br />
-    <%= f.text_area :objectives, id: :course_objectives, placeholder: "Objectives", class: 'registration-container__input' %>
+    <%= f.text_area :objectives, id: :course_objectives, placeholder: "Objectives", class: 'registration-container__input', value: course.objectives.join(",") %>
   </div>
 
   <div id="modules">
+    <% course.sections.each_with_index do |section, index| %>
+      <div id='module-<%= index %>'>
+        <label class='registration-container__label'>Module name</label><br>
+        <input class='registration-container__input' name='course[sections][<%= index %>][name]' id='course_sections_<%= index %>_name' placeholder='Module name' value='<%= section["title"] %>'>
+        <div class='resources'>
+          <% section["resources"].each_with_index do |resource, resource_index| %>
+            <div id='resource-<%= resource_index %>'>
+              <input class='registration-container__input' name='course[sections][<%= index %>][resources][<%= resource_index %>][name]' id='course_sections_<%= index %>_resources_<%= resource_index %>_name' placeholder='Resource name' value="<%= resource['title'] %>">
+              <input class='registration-container__input' name='course[sections][<%= index %>][resources][<%= resource_index %>][link]' id='course_sections_<%= index %>_resources_<%= resource_index %>_link' placeholder='Resource link' value="<%= resource['link'] %>"></div>
+          <% end %>
+
+          <a class='button-link' href='#' id='add-resource' data-id='<%= index %>'>Add Resource</a>
+        </div>
+        <div class='activities'>
+          <% section["activities"].each_with_index do |activity, activity_index| %>
+            <div id='activity-<%= activity_index %>'>
+              <input class='registration-container__input' name='course[sections][<%= index %>][activities][<%= activity_index%>][name]' id='course_sections_<%= index %>_activities_<%= activity_index %>_name' placeholder='Activity name' value="<%= activity['title']%>">
+              <input class='registration-container__input' name='course[sections][<%= index %>][activities][<%=activity_index %>][description]' id='course_sections_<%= index %>_activities_<%= activity_index %>_description' placeholder='Activity resource' value="<%= activity['description'] %>" />
+              <input class='registration-container__input' name='course[sections][<%= index %>][activities][<%= activity_index %>][url]' id='course_sections_<%= index %>_activities_<%= activity_index%>_url' placeholder='Activity link' value="<%= activity['url']%>" />
+              <div class='questions'>
+                <% activity["questions"].each_with_index do |question, question_index| %>
+                  <div id='question-<%= index %>'>
+                    <input class='registration-container__input' name='course[sections][<%= index %>][activities][<%= activity_index %>]questions[<%= question_index %>]' id='course_sections_<%= index %>_activities_<%= activity_index %>_questions_<%= question_index %>' placeholder='Activity question' value="<%= question["content"] %>"/>
+                  </div>
+                <% end %>
+
+                <a class='button-link' href='#' id='add-question-to-activity' data-id='<%= index %>' data-activity-id='<%= activity_index %>'>Add Question</a>
+              </div>
+            </div>
+          <% end %>
+
+          <a class='button-link' href='#' id='add-activity' data-id='<%= index %>'>Add Activity</a>
+        </div>
+        <div class='exam'>
+          <% section["exam"]["questions"].each_with_index do |question, exam_question_index| %>
+            <div id='question-<%= index %>'>
+              <input class='registration-container__input' name='course[sections][<%= index %>][exam][0]questions[<%= exam_question_index %>]' id='course_sections_<%= index %>_exam_0_questions_<%= exam_question_index %>' placeholder='Exam question' value="<%= question['content'] %>"/>
+            </div>
+          <% end %>
+
+          <a class='button-link' href='#' id='add-exam' data-id='<%= index %>'>Add Exam</a>
+        </div>
+      </div>
+    <% end %>
+
     <%= link_to "Add Module +", "#", id: "add-module", class:'button-outline__min' %>
   </div>
 
