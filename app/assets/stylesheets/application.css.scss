@@ -19,20 +19,6 @@ body {
   width: 90%;
 }
 
-.badge {
-  align-items: center;
-  display: flex;
-
-  .image img {
-    height: px-to-rems(50);
-  }
-
-  .title {
-    color: $alternative-color;
-    margin: 0 0 0 px-to-rems(16);
-  }
-}
-
 #error_explanation {
   color: $alternative-color;
   font-size: px-to-rems(14);

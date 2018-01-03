@@ -24,8 +24,16 @@
                 <%= badge_title_for current_user %>
               </div>
             </div>
-            <div class="mono-subtitle">
-              <%= current_user.inscriptions.completed.count %> Courses completed
+            <div class="completed-courses">
+              <%= current_user.inscriptions.completed.count %> COURSES COMPLETED
+            </div>
+            <div class="badge flex-column">
+              <div class="bar">
+                <div class="progress" style="width:<%= student_progress_percentage current_user %>%;"></div>
+              </div>
+              <div class="points">
+                <%= student_progress current_user %> FOR NEXT RANK
+              </div>
             </div>
           </div>
         </div>
@@ -42,24 +50,24 @@
           </div>
           <div>
             <% current_user.inscriptions.in_progress.in_groups_of(3, false) do |group| %>
-            <div class="row">
-              <% group.each do |in_progress_inscription| %>
-              <div class="col-4">
-                <div class="myclassroom__course">
-                  <div class="align vertical">
-                    <%= link_to inscription_path in_progress_inscription do %>
-                    <div class="main-subtitle">
-                      <%= in_progress_inscription.course.name %>
+              <div class="row">
+                <% group.each do |in_progress_inscription| %>
+                  <div class="col-4">
+                    <div class="myclassroom__course">
+                      <div class="align vertical">
+                        <%= link_to inscription_path in_progress_inscription do %>
+                          <div class="main-subtitle">
+                            <%= in_progress_inscription.course.name %>
+                          </div>
+                          <div class="mono-subtitle__alt">
+                            <%= in_progress_inscription.progress.completed_sections %> / <%= in_progress_inscription.progress.total_sections %> Modules
+                          </div>
+                        <% end %>
+                      </div>
                     </div>
-                    <div class="mono-subtitle__alt">
-                      <%= in_progress_inscription.progress.completed_sections %> / <%= in_progress_inscription.progress.total_sections %> Modules
-                    </div>
-                    <% end %>
                   </div>
-                </div>
+                <% end %>
               </div>
-              <% end %>
-            </div>
             <% end %>
           </div>
         </div>
@@ -74,22 +82,22 @@
           </div>
           <div>
             <% current_user.inscriptions.completed.in_groups_of(3, false) do |group| %>
-            <div class="row">
-              <% group.each do |completed_inscription| %>
-              <div class="col-4">
-                <div class="myclassroom__course">
-                  <div class="align vertical">
-                    <div class="main-subtitle">
-                      <%= completed_inscription.course.name %>
-                    </div>
-                    <div class="mono-subtitle__alt">
-                      <%= completed_inscription.progress.total_sections %> Modules
+              <div class="row">
+                <% group.each do |completed_inscription| %>
+                  <div class="col-4">
+                    <div class="myclassroom__course">
+                      <div class="align vertical">
+                        <div class="main-subtitle">
+                          <%= completed_inscription.course.name %>
+                        </div>
+                        <div class="mono-subtitle__alt">
+                          <%= completed_inscription.progress.total_sections %> Modules
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
               </div>
-              <% end %>
-            </div>
             <% end %>
           </div>
         </div>

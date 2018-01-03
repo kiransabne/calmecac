@@ -33,6 +33,11 @@ class User < ApplicationRecord
     inscriptions.find_by(course_id: course.id)
   end
 
+  def pontuation(kind_name)
+    kind_id = Kind.find_by(name: kind_name)
+    points.where(kind_id: kind_id).sum(:value)
+  end
+
   def change_points(options)
     if Gioco::Core::KINDS
       points = options[:points]
@@ -52,24 +57,22 @@ class User < ApplicationRecord
     Gioco::Core.sync_resource_by_points(self, new_pontuation, kind)
   end
 
-  def next_badge?(kind_id = false)
-    if Gioco::Core::KINDS
-      raise "Missing Kind Identifier argument" if !kind_id
-      old_pontuation = points.where(kind_id: kind_id).sum(:value)
-    else
-      old_pontuation = points.to_i
-    end
+  def next_badge?(kind_name = false)
+    old_pontuation = pontuation(kind_name)
+
     next_badge       = Badge.where("points > #{old_pontuation}").order("points ASC").first
-    last_badge_point = badges.last.try("points")
-    last_badge_point ||= 0
 
     if next_badge
-      percentage      = (old_pontuation - last_badge_point) * 100 / (next_badge.points - last_badge_point)
-      points          = next_badge.points - old_pontuation
-      next_badge_info = {
+      {
         badge: next_badge,
-        points: points,
-        percentage: percentage
+        points: next_badge.points - old_pontuation,
+        next_badge_points: next_badge.points
+      }
+    else
+      {
+        badge: "",
+        points: 0,
+        next_badge_points: 0
       }
     end
   end
