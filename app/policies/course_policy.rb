@@ -9,6 +9,10 @@ class CoursePolicy < ApplicationPolicy
     @user.has_role? :teacher
   end
 
+  def stats?
+    @user.has_role?(:teacher) && @record.owner?(@user)
+  end
+
   def new?
     @user.has_role? :teacher
   end

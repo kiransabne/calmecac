@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[show edit update inscribe]
+  before_action :set_course, only: %i[show edit update inscribe stats]
 
   def index
     authorize Course
@@ -132,6 +132,11 @@ class CoursesController < ApplicationController
     else
       redirect_to courses_path, notice: "Your inscription was not sucessful."
     end
+  end
+
+  def stats
+    authorize @course
+    @inscriptions = Inscription.where(course: current_user.courses)
   end
 
   private

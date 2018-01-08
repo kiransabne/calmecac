@@ -12,42 +12,46 @@
   <div class="container">
     <div class="row">
       <% @courses.in_groups_of(3, false) do |group| %>
-      <div class="row">
-      <% group.each do |course| %>
-      <div class="col-4">
-        <div class="course-card">
-          <div class="align vertical">
-            <div>
-              <div class="main-subtitle">
-                <%= course.name %>
-              </div>
+        <div class="row">
+          <% group.each do |course| %>
+            <div class="col-4">
+              <div class="course-card">
+                <div class="align vertical">
+                  <div>
+                    <div class="main-subtitle">
+                      <%= course.name %>
+                    </div>
 
-              <div class="inscription-text">
-                <%= course.description %>
-              </div>
+                    <div class="inscription-text">
+                      <%= course.description %>
+                    </div>
 
-            </div>
+                  </div>
 
-            <div>
-              <%= link_to 'Edit', edit_course_path(course) if policy(course).edit? %>
-            </div>
+                  <div>
+                    <%= link_to 'Edit', edit_course_path(course) if policy(course).edit? %>
+                  </div>
 
-            <% if policy(course).inscribe? %>
-              <div>
-                <%= link_to 'Inscribe', inscribe_course_path(course), method: :post, class:'button-alt' %>
-              </div>
-            <% else %>
-              <% if current_user.inscribed? course %>
-                <div class="">
-                  <%= link_to 'Inscribed', inscription_path(current_user.inscription_for(course)), class:'button-alt' %>
+                  <div>
+                    <%= link_to 'Stats', stats_course_path(course) if policy(course).stats? %>
+                  </div>
+
+                  <% if policy(course).inscribe? %>
+                    <div>
+                      <%= link_to 'Inscribe', inscribe_course_path(course), method: :post, class:'button-alt' %>
+                    </div>
+                  <% else %>
+                    <% if current_user.inscribed? course %>
+                      <div class="">
+                        <%= link_to 'Inscribed', inscription_path(current_user.inscription_for(course)), class:'button-alt' %>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
-              <% end %>
-            <% end %>
-          </div>
+              </div>
+            </div>
+          <% end %>
         </div>
-      </div>
-      <% end %>
-      </div>
       <% end %>
     </div>
   </div>
